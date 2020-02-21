@@ -43,6 +43,11 @@ public class StartApplicationTest implements CommandLineRunner {
                     "id SERIAL, name VARCHAR(255))");
 
 
+            jdbcTemplate.execute("DROP TABLE answers IF EXISTS");
+            jdbcTemplate.execute("CREATE TABLE answers(" +
+                    "id SERIAL, name VARCHAR(255), )");
+
+
             Question question = new Question();
             question.setName("test1");
 

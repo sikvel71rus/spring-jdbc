@@ -1,5 +1,6 @@
 package com.nyubin.repository;
 
+import com.nyubin.mapper.AnswerRowMapper;
 import com.nyubin.model.Answer;
 import com.nyubin.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,11 @@ public class AnswerRepositoryImpl implements AnswerRepository {
     }
 
     @Override
-    public List<Answer> getByQuestionId() {
-        return null;
+    public List<Answer> getByQuestionId(Long id) {
+        return jdbcTemplate.query(
+                "select * from answers where id = ?",
+                new Object[]{id},
+                        new AnswerRowMapper());
     }
 }
+

@@ -9,5 +9,5 @@ public interface AnswerRepository {
 
     int save(Answer answer);
 
-    List<Answer> getByQuestionId();
+    List<Answer> getByQuestionId(Long id);
 }

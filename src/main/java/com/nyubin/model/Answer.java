@@ -5,18 +5,18 @@ public class Answer {
     private Long id;
     private Long questionId;
     private String name;
-    private String isRight;
+    private Boolean isRight;
 
 
     public Answer() {
     }
 
-    public Answer(String name, String isRight) {
+    public Answer(String name, Boolean isRight) {
         this.name = name;
         this.isRight = isRight;
     }
 
-    public Answer(Long questionId, String name, String isRight) {
+    public Answer(Long questionId, String name, Boolean isRight) {
         this.questionId = questionId;
         this.name = name;
         this.isRight = isRight;
@@ -48,11 +48,11 @@ public class Answer {
         this.name = name;
     }
 
-    public String getIsRight() {
+    public Boolean getIsRight() {
         return isRight;
     }
 
-    public void setIsRight(String isRight) {
+    public void setIsRight(Boolean isRight) {
         this.isRight = isRight;
     }
 }
