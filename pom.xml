@@ -73,6 +73,29 @@
             <artifactId>h2</artifactId>
         </dependency>
 
+<!--        Add dependencies for rest controller-->
+
+        <!-- spring mvc, rest -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- spring security -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--        </dependency>-->
+
+
+
+
+
+
+
+
+
+
     </dependencies>
 
     <build>

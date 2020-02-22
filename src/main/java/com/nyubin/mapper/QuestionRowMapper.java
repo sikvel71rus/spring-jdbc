@@ -11,10 +11,8 @@ public class QuestionRowMapper implements RowMapper<Question> {
     @Override
     public Question mapRow(ResultSet resultSet, int i) throws SQLException {
 
-        Question question = new Question();
-        question.setId(resultSet.getLong("id"));
-        question.setName(resultSet.getString("name"));
-
-        return question;
+        return new Question(
+                resultSet.getLong("id"),
+                resultSet.getString("name"));
     }
 }

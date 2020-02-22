@@ -10,4 +10,6 @@ public interface AnswerRepository {
     int save(Answer answer);
 
     List<Answer> getByQuestionId(Long id);
+
+    List<Answer> findAll();
 }
