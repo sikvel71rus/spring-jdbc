@@ -13,20 +13,23 @@ public class QuestionData {
     private String name;
     private String answer;
     private Set<AnswerData> answerDataSet;
+    private QuestionType questionType;
 
     public QuestionData(){}
 
-    public QuestionData(Long id, String name, String answer, Set<AnswerData> answerDataSet) {
+    public QuestionData(Long id, String name, String answer, Set<AnswerData> answerDataSet, QuestionType questionType) {
         this.id = id;
         this.name = name;
         this.answer = answer;
         this.answerDataSet = answerDataSet;
+        this.questionType = questionType;
     }
 
-    public QuestionData(String name, String answer, Set<AnswerData> answerDataSet) {
+    public QuestionData(String name, String answer, Set<AnswerData> answerDataSet, QuestionType questionType) {
         this.name = name;
         this.answer = answer;
         this.answerDataSet = answerDataSet;
+        this.questionType = questionType;
     }
 
     public Long getId() {
@@ -61,4 +64,11 @@ public class QuestionData {
         this.answerDataSet = answerDataSet;
     }
 
+    public QuestionType getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(QuestionType questionType) {
+        this.questionType = questionType;
+    }
 }
