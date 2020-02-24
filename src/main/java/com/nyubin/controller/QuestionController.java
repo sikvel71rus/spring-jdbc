@@ -18,7 +18,7 @@ public class QuestionController {
     //Find
     @GetMapping("/questions")
     List<Question> findAll(){
-        return questionRepository.findAll2();
+        return questionRepository.findAllQuestionsWithAnswers();
     }
 
     //Save

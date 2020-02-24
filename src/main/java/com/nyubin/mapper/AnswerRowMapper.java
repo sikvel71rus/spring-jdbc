@@ -2,10 +2,12 @@ package com.nyubin.mapper;
 
 import com.nyubin.model.Answer;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
 public class AnswerRowMapper implements RowMapper<Answer> {
     @Override
     public Answer mapRow(ResultSet resultSet, int i) throws SQLException {

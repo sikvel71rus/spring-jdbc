@@ -1,5 +1,6 @@
 package com.nyubin.repository;
 
+import com.nyubin.exctractor.QuestionSetExtractor;
 import com.nyubin.mapper.QuestionRowMapper;
 import com.nyubin.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private QuestionSetExtractor questionSetExtractor;
 
     @Override
     public int count() {
@@ -43,5 +47,12 @@ public class QuestionRepositoryImpl implements QuestionRepository {
         return jdbcTemplate.query(
                 "select * from questions",
                 new QuestionRowMapper());
+    }
+
+    @Override
+    public List<Question> findAllQuestionsWithAnswers() {
+        return jdbcTemplate.query("select * from questions, answers "
+        + "where questions.id = answers.question_id order by questions.id",
+                new QuestionSetExtractor());
     }
 }

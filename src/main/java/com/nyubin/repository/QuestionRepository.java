@@ -15,4 +15,6 @@ public interface QuestionRepository {
 
     List<Question> findAll2();
 
+    List<Question> findAllQuestionsWithAnswers();
+
 }
