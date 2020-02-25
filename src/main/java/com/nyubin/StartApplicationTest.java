@@ -111,6 +111,8 @@ public class StartApplicationTest implements CommandLineRunner {
             Iterable<UserAnswer> all = userAnswerRepo.findAll();
             Iterable<User> all1 = userRepo.findAll();
 
+            User funnyUser = userRepo.findByUsername("funnyUser");
+
 
         }
 
