@@ -20,9 +20,9 @@ import java.util.HashSet;
 import java.util.List;
 
 @SpringBootApplication
-public class StartApplicationTest implements CommandLineRunner {
+public class StartApplication implements CommandLineRunner {
 
-        private static final Logger log = LoggerFactory.getLogger(StartApplicationTest.class);
+        private static final Logger log = LoggerFactory.getLogger(StartApplication.class);
 
         @Autowired
         JdbcTemplate jdbcTemplate;
@@ -43,7 +43,7 @@ public class StartApplicationTest implements CommandLineRunner {
         }
 
         public static void main(String[] args) {
-            SpringApplication.run(StartApplicationTest.class, args);
+            SpringApplication.run(StartApplication.class, args);
         }
 
 
