@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class QuestionController {
@@ -33,14 +33,22 @@ public class QuestionController {
 //    }
 
     @GetMapping("/questions")
-    Iterable<QuestionData> findThetAll(){
-
-    List<QuestionData> targetCollection = new ArrayList<>();
-    for (QuestionData questionData:questionDataRepo.findAll()) {
-        targetCollection.add(questionData);
+    List<QuestionData> findThetAll(){
+    return (List<QuestionData>) questionDataRepo.findAll();
     }
-    return targetCollection;
 
-    };
+
+    @GetMapping("/questions/{id}")
+    Optional<QuestionData> getById(@PathVariable Long id){
+        return questionDataRepo.findById(id);
+    }
+
+    @PostMapping("/questions")
+    @ResponseStatus(HttpStatus.CREATED)
+    QuestionData answer(@RequestBody QuestionData questionData){
+        return questionDataRepo.save(questionData);
+    }
+
+
 
 }

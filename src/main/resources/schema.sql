@@ -31,17 +31,17 @@ user_id long references users(id),
 question_id long references questions_data(id),
 is_right boolean);
 
-drop table answer_user if exists;
-create table answer_user(
-user long,
-user_answer long,
-primary key (user,user_answer));
+--drop table answer_user if exists;
+--create table answer_user(
+--user long,
+--user_answer long,
+--primary key (user,user_answer));
 
-drop table question_answer if exists;
-create table question_answer(
-question long,
-user_answer long,
-primary key (question, user_answer));
+--drop table question_answer if exists;
+--create table question_answer(
+--question long,
+--user_answer long,
+--primary key (question, user_answer));
 
 
 

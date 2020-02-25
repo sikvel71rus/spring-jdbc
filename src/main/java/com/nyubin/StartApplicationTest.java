@@ -98,8 +98,11 @@ public class StartApplicationTest implements CommandLineRunner {
             UserAnswer userAnswer = new UserAnswer();
 
             userAnswer.setUserAnswer("Bryak");
-            userAnswer.addUserRef(user);
-            userAnswer.addQuestionRef(questionData);
+//            userAnswer.addUserRef(user);
+//            userAnswer.addQuestionRef(questionData);
+            UserAnswer userAnswer1 = new UserAnswer();
+            userAnswer1.setUserAnswer("Смешной ответ");
+            userAnswerRepo.save(userAnswer1);
             userAnswer.addUser(user);
             userAnswer.addQuestion(questionData);
             userAnswerRepo.save(userAnswer);

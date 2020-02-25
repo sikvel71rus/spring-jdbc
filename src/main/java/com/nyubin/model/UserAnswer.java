@@ -11,9 +11,9 @@ public class UserAnswer {
 
     @Id
     private Long id;
-    private Set<UserRef> users = new HashSet<>();
+//    private Set<UserRef> users = new HashSet<>();
 //    private UserRef users;
-    private Set<QuestionRef> questions = new HashSet<>();
+//    private Set<QuestionRef> questions = new HashSet<>();
     private String userAnswer;
     private Boolean isRight;
     private Long userId;
@@ -23,10 +23,10 @@ public class UserAnswer {
     }
 
 
-    public UserAnswer(Long id, Set<UserRef> users, Set<QuestionRef> questions, String userAnswer, Boolean isRight, Long userId, Long questionId) {
+    public UserAnswer(Long id, String userAnswer, Boolean isRight, Long userId, Long questionId) {
         this.id = id;
-        this.users = users;
-        this.questions = questions;
+//        this.users = users;
+//        this.questions = questions;
         this.userAnswer = userAnswer;
         this.isRight = isRight;
         this.userId = userId;
@@ -41,13 +41,13 @@ public class UserAnswer {
         this.id = id;
     }
 
-    public Set<UserRef> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<UserRef> users) {
-        this.users = users;
-    }
+//    public Set<UserRef> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(Set<UserRef> users) {
+//        this.users = users;
+//    }
 
 //    public UserRef getUsers() {
 //        return users;
@@ -78,13 +78,13 @@ public class UserAnswer {
         return userAnswer;
     }
 
-    public Set<QuestionRef> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(Set<QuestionRef> questions) {
-        this.questions = questions;
-    }
+//    public Set<QuestionRef> getQuestions() {
+//        return questions;
+//    }
+//
+//    public void setQuestions(Set<QuestionRef> questions) {
+//        this.questions = questions;
+//    }
 
     public void setUserAnswer(String userAnswer) {
         this.userAnswer = userAnswer;
@@ -98,9 +98,9 @@ public class UserAnswer {
         this.userId = userId;
     }
 
-    public void addUserRef(User user){
-        this.users.add(new UserRef(user.getId()));
-    }
+//    public void addUserRef(User user){
+//        this.users.add(new UserRef(user.getId()));
+//    }
 //    public void addUserRef(User user){
 //        this.users = new UserRef(user.getId());
 //    }
@@ -118,9 +118,9 @@ public class UserAnswer {
         this.userId = user.getId();
     }
 
-    public void addQuestionRef(QuestionData questionData){
-        this.questions.add(new QuestionRef(questionData.getId()));
-    }
+//    public void addQuestionRef(QuestionData questionData){
+//        this.questions.add(new QuestionRef(questionData.getId()));
+//    }
     public void addQuestion(QuestionData questionData){
         this.questionId = questionData.getId();
     }

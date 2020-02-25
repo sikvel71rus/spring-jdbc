@@ -1,4 +1,4 @@
 package com.nyubin.service;
 
-public class QuestionServiceImpl {
+public class QuestionServiceImpl implements QuestionService {
 }

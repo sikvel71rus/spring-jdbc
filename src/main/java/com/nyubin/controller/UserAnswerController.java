@@ -3,10 +3,11 @@ package com.nyubin.controller;
 import com.nyubin.model.UserAnswer;
 import com.nyubin.repository.UserAnswerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserAnswerController {
@@ -16,11 +17,22 @@ public class UserAnswerController {
 
     @GetMapping("/useranswers")
     List<UserAnswer> findAll(){
-        Iterable<UserAnswer> all = userAnswerRepo.findAll();
-        List<UserAnswer> all1 = (List<UserAnswer>) userAnswerRepo.findAll();
-
         return (List<UserAnswer>) userAnswerRepo.findAll();
+    }
+
+    @GetMapping("/useranswers/{id}")
+    Optional<UserAnswer> findById(@PathVariable Long id){
+        return userAnswerRepo.findById(id);
+    }
+
+    @PostMapping("/useranswers")
+    @ResponseStatus(HttpStatus.CREATED)
+    UserAnswer answer(@RequestBody UserAnswer newUserAnswer){
+        return userAnswerRepo.save(newUserAnswer);
     }
 
 
 }
+//    int answer(@RequestBody Answer newAnswer){
+//        return answerRepository.save(newAnswer);
+//    }
