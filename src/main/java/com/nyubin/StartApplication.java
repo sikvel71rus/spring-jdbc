@@ -92,7 +92,8 @@ public class StartApplication implements CommandLineRunner {
             Iterable<QuestionData> allById = questionDataRepo.findAllById(Collections.singleton(1L));
 
             User user = new User();
-            user.setUserName("funnyUser");
+            user.setUserName("1");
+            user.setPassword("1");
             userRepo.save(user);
 
             UserAnswer userAnswer = new UserAnswer();

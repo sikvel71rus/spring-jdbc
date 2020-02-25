@@ -2,9 +2,15 @@ package com.nyubin.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 @Table("users")
+//TODO delete if unnecessary
 public class User {
+//        implements UserDetails {
 
     @Id
     private Long id;
@@ -60,4 +66,35 @@ public class User {
     public void setUserScore(Float userScore) {
         this.userScore = userScore;
     }
+
+    //TODO delete if unnecessary
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getUsername() {
+//        return userName;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
 }
