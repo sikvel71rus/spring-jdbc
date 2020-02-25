@@ -32,7 +32,7 @@ public class QuestionController {
 //        return questionRepository.save(question);
 //    }
 
-    @GetMapping("/questionsData")
+    @GetMapping("/questions")
     Iterable<QuestionData> findThetAll(){
 
     List<QuestionData> targetCollection = new ArrayList<>();

@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Table("questions_data")
@@ -11,25 +12,22 @@ public class QuestionData {
     @Id
     private Long id;
     private String name;
-    private String answer;
-    private Set<AnswerData> answerDataSet;
-    private QuestionType questionType;
+    private Set<AnswerData> answerDataSet = new HashSet<>();
+//    private QuestionType questionType;
 
     public QuestionData(){}
 
-    public QuestionData(Long id, String name, String answer, Set<AnswerData> answerDataSet, QuestionType questionType) {
+    public QuestionData(Long id, String name, Set<AnswerData> answerDataSet, QuestionType questionType) {
         this.id = id;
         this.name = name;
-        this.answer = answer;
         this.answerDataSet = answerDataSet;
-        this.questionType = questionType;
+//        this.questionType = questionType;
     }
 
-    public QuestionData(String name, String answer, Set<AnswerData> answerDataSet, QuestionType questionType) {
+    public QuestionData(String name, Set<AnswerData> answerDataSet, QuestionType questionType) {
         this.name = name;
-        this.answer = answer;
         this.answerDataSet = answerDataSet;
-        this.questionType = questionType;
+//        this.questionType = questionType;
     }
 
     public Long getId() {
@@ -48,14 +46,6 @@ public class QuestionData {
         this.name = name;
     }
 
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
     public Set<AnswerData> getAnswerDataSet() {
         return answerDataSet;
     }
@@ -64,11 +54,11 @@ public class QuestionData {
         this.answerDataSet = answerDataSet;
     }
 
-    public QuestionType getQuestionType() {
-        return questionType;
-    }
-
-    public void setQuestionType(QuestionType questionType) {
-        this.questionType = questionType;
-    }
+//    public QuestionType getQuestionType() {
+//        return questionType;
+//    }
+//
+//    public void setQuestionType(QuestionType questionType) {
+//        this.questionType = questionType;
+//    }
 }

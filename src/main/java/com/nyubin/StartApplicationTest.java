@@ -2,6 +2,8 @@ package com.nyubin;
 
 import com.nyubin.model.*;
 import com.nyubin.repository.QuestionDataRepo;
+import com.nyubin.repository.UserAnswerRepo;
+import com.nyubin.repository.UserRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,12 @@ public class StartApplicationTest implements CommandLineRunner {
         @Autowired
         private QuestionDataRepo questionDataRepo;
 
+        @Autowired
+        private UserRepo userRepo;
+
+        @Autowired
+        private UserAnswerRepo userAnswerRepo;
+
         @Bean
         public LobHandler lobHandler() {
         return new DefaultLobHandler();
@@ -53,7 +61,7 @@ public class StartApplicationTest implements CommandLineRunner {
             QuestionData questionData = new QuestionData();
 
             questionData.setName("testname");
-            questionData.setAnswer("asd");
+
             AnswerData answerData = new AnswerData();
             answerData.setName("asd1");
             answerData.setRight(Boolean.TRUE);
@@ -67,14 +75,14 @@ public class StartApplicationTest implements CommandLineRunner {
             QuestionType questionType = new QuestionType();
             questionType.setName("Свободный выбор ответа");
             questionType.setId(1L);
-            questionData.setQuestionType(questionType);
+//            questionData.setQuestionType(questionType);
 
             questionDataRepo.save(questionData);
 
             QuestionData questionData1 = new QuestionData();
 
             questionData1.setName("testname1");
-            questionData1.setAnswer("asd");
+
 
             questionDataRepo.save(questionData);
 
@@ -82,6 +90,23 @@ public class StartApplicationTest implements CommandLineRunner {
 
             Iterable<QuestionData> all3 = questionDataRepo.findAll();
             Iterable<QuestionData> allById = questionDataRepo.findAllById(Collections.singleton(1L));
+
+            User user = new User();
+            user.setUserName("funnyUser");
+            userRepo.save(user);
+
+            UserAnswer userAnswer = new UserAnswer();
+
+            userAnswer.setUserAnswer("Bryak");
+            userAnswer.addUserRef(user);
+            userAnswer.addQuestionRef(questionData);
+            userAnswer.addUser(user);
+            userAnswer.addQuestion(questionData);
+            userAnswerRepo.save(userAnswer);
+
+
+            Iterable<UserAnswer> all = userAnswerRepo.findAll();
+            Iterable<User> all1 = userRepo.findAll();
 
 
         }
