@@ -3,6 +3,7 @@ package com.nyubin.controller;
 
 import com.nyubin.model.QuestionData;
 import com.nyubin.repository.QuestionDataRepo;
+import com.nyubin.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +14,8 @@ import java.util.Optional;
 @RestController
 public class QuestionController {
 
-//    @Autowired
-//    private QuestionRepository questionRepository;
-//
     @Autowired
-    private QuestionDataRepo questionDataRepo;
+    private QuestionService questionService;
 //
 //    //Find
 //    @GetMapping("/questions")
@@ -33,20 +31,20 @@ public class QuestionController {
 //    }
 
     @GetMapping("/questions")
-    List<QuestionData> findThetAll(){
-    return (List<QuestionData>) questionDataRepo.findAll();
+    List<QuestionData> findAll(){
+        return questionService.findAll();
     }
 
 
     @GetMapping("/questions/{id}")
-    Optional<QuestionData> getById(@PathVariable Long id){
-        return questionDataRepo.findById(id);
+    Optional<QuestionData> findById(@PathVariable Long id){
+        return questionService.findById(id);
     }
 
     @PostMapping("/questions")
     @ResponseStatus(HttpStatus.CREATED)
-    QuestionData answer(@RequestBody QuestionData questionData){
-        return questionDataRepo.save(questionData);
+    QuestionData save(@RequestBody QuestionData questionData){
+        return questionService.save(questionData);
     }
 
 
