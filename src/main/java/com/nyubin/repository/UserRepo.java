@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.security.acl.LastOwnerException;
 
-public interface UserRepo extends CrudRepository<User, LastOwnerException> {
+public interface UserRepo extends CrudRepository<User, Long> {
 
     @Query("select * from users where user_name =:name")
     User findByUsername(@Param("name") String username);

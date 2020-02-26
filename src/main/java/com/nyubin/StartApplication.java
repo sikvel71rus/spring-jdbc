@@ -94,6 +94,8 @@ public class StartApplication implements CommandLineRunner {
             User user = new User();
             user.setUserName("1");
             user.setPassword("1");
+            Role role = new Role();
+            user.setRole(role);
             userRepo.save(user);
 
             UserAnswer userAnswer = new UserAnswer();

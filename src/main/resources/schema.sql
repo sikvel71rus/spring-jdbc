@@ -10,6 +10,12 @@ user_name VARCHAR(255),
 password VARCHAR(255),
 user_score float);
 
+DROP TABLE roles if EXISTS;
+create TABLE role(
+id serial primary key,
+users long references users(id),
+authority_name VARCHAR(255));
+
 DROP TABLE answer_data IF EXISTS;
 CREATE TABLE answer_data(
 id serial primary key,

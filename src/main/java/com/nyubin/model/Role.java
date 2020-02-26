@@ -1,12 +1,24 @@
 package com.nyubin.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.security.core.GrantedAuthority;
 
-public enum Role implements GrantedAuthority {
-    USER, ADMIN;
+public class Role implements GrantedAuthority {
+
+
+    @Id
+    private long id;
+    private String authorityName  = "USER";
+
+    public Role() {
+    }
+
+    public Role(long id) {
+        this.id = id;
+    }
 
     @Override
     public String getAuthority() {
-        return name();
+        return authorityName;
     }
 }
