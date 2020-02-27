@@ -65,13 +65,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .authorizeRequests()
                 .antMatchers("/registration","/h2-console","/useranswers").permitAll()
-                .antMatchers(HttpMethod.GET, "/questions/**").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/questions").hasRole("USER")
+//                .antMatchers(HttpMethod.GET, "/questions/**").hasRole("USER")
+//                .antMatchers(HttpMethod.POST, "/questions").hasRole("USER")
 //                .antMatchers(HttpMethod.GET, "/useranswers/**").hasRole("USER")
 //                .antMatchers(HttpMethod.POST, "/useranswers").hasRole("USER")
             .and()
-                .csrf().disable()
-                .formLogin().disable();
+                .csrf().disable();
+//                .formLogin().disable();
 
 
     }

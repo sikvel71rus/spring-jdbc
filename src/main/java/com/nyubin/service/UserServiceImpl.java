@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserService {
 
         User byUsername = userRepo.findByUsername(userName);
 
-
         return userRepo.findByUsername(userName);
     }
 }

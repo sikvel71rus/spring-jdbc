@@ -17,6 +17,7 @@ import org.springframework.jdbc.support.lob.LobHandler;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
@@ -115,6 +116,8 @@ public class StartApplication implements CommandLineRunner {
             Iterable<User> all1 = userRepo.findAll();
 
             User funnyUser = userRepo.findByUsername("funnyUser");
+
+            List<Long> allIds = questionDataRepo.findAllIds();
 
 
         }
