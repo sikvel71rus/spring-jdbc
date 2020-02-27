@@ -17,7 +17,6 @@ import org.springframework.jdbc.support.lob.LobHandler;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 
 @SpringBootApplication
 public class StartApplication implements CommandLineRunner {
@@ -92,7 +91,7 @@ public class StartApplication implements CommandLineRunner {
             Iterable<QuestionData> allById = questionDataRepo.findAllById(Collections.singleton(1L));
 
             User user = new User();
-            user.setUserName("1");
+            user.setUsername("1");
             user.setPassword("1");
             Role role = new Role();
             user.setRole(role);

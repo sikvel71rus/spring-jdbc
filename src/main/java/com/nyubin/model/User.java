@@ -1,6 +1,7 @@
 package com.nyubin.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -16,7 +17,8 @@ public class User implements UserDetails {
 
     @Id
     private Long id;
-    private String userName;
+    @Column("user_name")
+    private String username;
     private String password;
     private Float userScore;
 
@@ -26,16 +28,16 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(Long id, String userName, String password, Float userScore, Role role) {
+    public User(Long id, String username, String password, Float userScore, Role role) {
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.userScore = userScore;
         this.role = role;
     }
 
-    public User(String userName, String password, Float userScore, Role role) {
-        this.userName = userName;
+    public User(String username, String password, Float userScore, Role role) {
+        this.username = username;
         this.password = password;
         this.userScore = userScore;
         this.role = role;
@@ -49,12 +51,12 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -80,6 +82,8 @@ public class User implements UserDetails {
     public void setRole(Role role) {
         this.role = role;
     }
+
+
     //TODO переделать костыль
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -88,10 +92,6 @@ public class User implements UserDetails {
         return roles;
     }
 
-    @Override
-    public String getUsername() {
-        return userName;
-    }
 
     @Override
     public boolean isAccountNonExpired() {

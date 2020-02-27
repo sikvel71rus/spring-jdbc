@@ -5,7 +5,6 @@ import com.nyubin.model.User;
 import com.nyubin.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ public class UserServiceImpl implements UserService {
     private UserRepo userRepo;
 
     public String addUser(User user){
-        User userFromDb = userRepo.findByUsername(user.getUserName());
+        User userFromDb = userRepo.findByUsername(user.getUsername());
 
         if(userFromDb != null){
         return "User exist";
