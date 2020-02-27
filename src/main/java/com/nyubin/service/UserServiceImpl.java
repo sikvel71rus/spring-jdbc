@@ -22,7 +22,8 @@ public class UserServiceImpl implements UserService {
         if(userFromDb != null){
         return "User exist";
         }
-        user.setRoles(new Role());
+//        user.setRoles(new Role());
+        user.getRoles().add(new Role());
         userRepo.save(user);
         return "User added";
 

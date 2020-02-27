@@ -21,14 +21,13 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private Float userScore;
-
-    private Role roles;
+    private Set<Role> roles = new HashSet<>();
 
 
     public User() {
     }
 
-    public User(Long id, String username, String password, Float userScore, Role roles) {
+    public User(Long id, String username, String password, Float userScore, Set<Role> roles) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -36,7 +35,7 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public User(String username, String password, Float userScore, Role roles) {
+    public User(String username, String password, Float userScore, Set<Role> roles) {
         this.username = username;
         this.password = password;
         this.userScore = userScore;
@@ -75,14 +74,13 @@ public class User implements UserDetails {
         this.userScore = userScore;
     }
 
-    public Role getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Role roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
 
     //TODO переделать костыль
     @Override

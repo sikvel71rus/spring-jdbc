@@ -17,6 +17,7 @@ import org.springframework.jdbc.support.lob.LobHandler;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class StartApplication implements CommandLineRunner {
@@ -94,7 +95,7 @@ public class StartApplication implements CommandLineRunner {
             user.setUsername("1");
             user.setPassword("12");
             Role role = new Role();
-            user.setRoles(role);
+            user.getRoles().add(new Role());
             userRepo.save(user);
 
             UserAnswer userAnswer = new UserAnswer();
