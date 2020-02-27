@@ -8,7 +8,6 @@ CREATE TABLE users(
 id serial primary key,
 user_name VARCHAR(255),
 password VARCHAR(255),
-roles VARCHAR(255),
 user_score float);
 
 DROP TABLE roles if EXISTS;
