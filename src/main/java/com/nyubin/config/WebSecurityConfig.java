@@ -53,14 +53,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .logout()
 //                .logoutSuccessUrl("/login?logout")
 //                .invalidateHttpSession(true)
-                .and()
+            .and()
+                .headers()
+                .frameOptions()
+                .disable()
+            .and()
                 .authorizeRequests()
                 .antMatchers("/registration","/h2-console","/useranswers").permitAll()
                 .antMatchers(HttpMethod.GET, "/questions/**").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/questions").hasRole("USER")
 //                .antMatchers(HttpMethod.GET, "/useranswers/**").hasRole("USER")
 //                .antMatchers(HttpMethod.POST, "/useranswers").hasRole("USER")
-                .and()
+            .and()
                 .csrf().disable();
 //                .formLogin().disable();
 
