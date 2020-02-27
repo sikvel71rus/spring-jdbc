@@ -92,9 +92,9 @@ public class StartApplication implements CommandLineRunner {
 
             User user = new User();
             user.setUsername("1");
-            user.setPassword("1");
+            user.setPassword("12");
             Role role = new Role();
-            user.setRole(role);
+            user.setRoles(role);
             userRepo.save(user);
 
             UserAnswer userAnswer = new UserAnswer();

@@ -1,9 +1,11 @@
 package com.nyubin.controller;
 
+import com.nyubin.model.User;
 import com.nyubin.model.UserAnswer;
 import com.nyubin.repository.UserAnswerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +29,8 @@ public class UserAnswerController {
 
     @PostMapping("/useranswers")
     @ResponseStatus(HttpStatus.CREATED)
-    UserAnswer answer(@RequestBody UserAnswer newUserAnswer){
+    UserAnswer answer(@RequestBody UserAnswer newUserAnswer, @AuthenticationPrincipal User user){
+        newUserAnswer.setUserId(user.getId());
         return userAnswerRepo.save(newUserAnswer);
     }
 

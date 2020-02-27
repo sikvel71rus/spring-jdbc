@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
         if(userFromDb != null){
         return "User exist";
         }
-        user.setRole(new Role());
+        user.setRoles(new Role());
         userRepo.save(user);
         return "User added";
 
@@ -36,6 +36,10 @@ public class UserServiceImpl implements UserService {
     //TODO check
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        return (UserDetails) userRepo.findByUsername(userName);
+
+        User byUsername = userRepo.findByUsername(userName);
+
+
+        return userRepo.findByUsername(userName);
     }
 }

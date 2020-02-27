@@ -22,25 +22,25 @@ public class User implements UserDetails {
     private String password;
     private Float userScore;
 
-    private Role role;
+    private Role roles;
 
 
     public User() {
     }
 
-    public User(Long id, String username, String password, Float userScore, Role role) {
+    public User(Long id, String username, String password, Float userScore, Role roles) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.userScore = userScore;
-        this.role = role;
+        this.roles = roles;
     }
 
-    public User(String username, String password, Float userScore, Role role) {
+    public User(String username, String password, Float userScore, Role roles) {
         this.username = username;
         this.password = password;
         this.userScore = userScore;
-        this.role = role;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -75,12 +75,12 @@ public class User implements UserDetails {
         this.userScore = userScore;
     }
 
-    public Role getRole() {
-        return role;
+    public Role getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Role roles) {
+        this.roles = roles;
     }
 
 
