@@ -46,10 +46,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                HTTP Basic authentication
                 .httpBasic()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logout()
+//                .logoutUrl("/logout")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .clearAuthentication(true)
                 .logoutSuccessUrl("/logout.done")
-                .deleteCookies("JSESSIONID")
+//                .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
 //                .logoutSuccessUrl("/")
 //                .authorizeRequests()
@@ -67,8 +69,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
             .and()
                 .authorizeRequests()
-                .antMatchers("/registration","/h2-console","/useranswers").permitAll();
-//                .anyRequest().authenticated()
+                .antMatchers("/registration","/h2-console").permitAll();
+//                .anyRequest().authenticated();
 //                .antMatchers(HttpMethod.GET, "/questions/**").hasRole("USER")
 //                .antMatchers(HttpMethod.POST, "/questions").hasRole("USER")
 //                .antMatchers(HttpMethod.GET, "/useranswers/**").hasRole("USER")
