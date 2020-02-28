@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -45,10 +46,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                HTTP Basic authentication
                 .httpBasic()
                 .and()
-                .logout()
-                .logoutSuccessUrl("/login?logout")
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .clearAuthentication(true)
+                .logoutSuccessUrl("/logout.done")
+                .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
-                .logoutSuccessUrl("/")
+//                .logoutSuccessUrl("/")
 //                .authorizeRequests()
 //                .and()
 //                .authorizeRequests()
@@ -64,13 +67,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
             .and()
                 .authorizeRequests()
-                .antMatchers("/registration","/h2-console","/useranswers").permitAll()
+                .antMatchers("/registration","/h2-console","/useranswers").permitAll();
+//                .anyRequest().authenticated()
 //                .antMatchers(HttpMethod.GET, "/questions/**").hasRole("USER")
 //                .antMatchers(HttpMethod.POST, "/questions").hasRole("USER")
 //                .antMatchers(HttpMethod.GET, "/useranswers/**").hasRole("USER")
 //                .antMatchers(HttpMethod.POST, "/useranswers").hasRole("USER")
-            .and()
-                .csrf().disable();
+//            .and()
+//                .csrf().disable();
 //                .formLogin().disable();
 
 
