@@ -21,6 +21,8 @@ public interface UserAnswerService {
 
     Long countRightAnswersByUser(Long id);
 
+    List<UserAnswer> findAllAnswerDataByUser(Long id);
+
 
 
 

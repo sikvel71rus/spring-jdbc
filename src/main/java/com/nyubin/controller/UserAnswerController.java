@@ -2,7 +2,9 @@ package com.nyubin.controller;
 
 import com.nyubin.model.User;
 import com.nyubin.model.UserAnswer;
+import com.nyubin.model.UserAnswerResponse;
 import com.nyubin.repository.UserAnswerRepo;
+import com.nyubin.service.UserAnswerResponseService;
 import com.nyubin.service.UserAnswerService;
 import com.nyubin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class UserAnswerController {
 
     @Autowired
     private UserAnswerService userAnswerService;
+
+    @Autowired
+    private UserAnswerResponseService userAnswerResponseService;
 
     @GetMapping("/useranswers")
     List<UserAnswer> findAll(){
@@ -36,6 +41,13 @@ public class UserAnswerController {
         newUserAnswer.setUserId(user.getId());
         return userAnswerService.save(newUserAnswer, user);
     }
+
+
+    @GetMapping("/useranswerresponse")
+    List<UserAnswerResponse> getUserAnswersResponse(@AuthenticationPrincipal User user){
+        return userAnswerResponseService.getUserAnswersResponse(user);
+    }
+
 
 
 }

@@ -77,6 +77,11 @@ public class UserAnswerServiceImpl implements UserAnswerService {
         return userAnswerRepo.countRightAnswersByUser(id);
     }
 
+    public List<UserAnswer> findAllAnswerDataByUser(Long id){
+
+        return userAnswerRepo.findAllUserAnswersbyUser(id);
+    }
+
 
 
 //    public List<Map<String,String>> getQuestionAndAnswerList(User user){

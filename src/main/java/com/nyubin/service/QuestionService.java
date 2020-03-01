@@ -16,5 +16,7 @@ public interface QuestionService {
 
     Optional<QuestionData> findRandomQuestion(User user);
 
+    String getQuestionNameById(Long id);
+
 
 }

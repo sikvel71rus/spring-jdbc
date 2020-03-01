@@ -113,7 +113,7 @@ public class StartApplication implements CommandLineRunner {
             userAnswerRepo.save(userAnswer1);
             userAnswer.addUser(user);
             userAnswer.addQuestion(questionData);
-//            userAnswerRepo.save(userAnswer);
+            userAnswerRepo.save(userAnswer);
 
 
             Iterable<UserAnswer> all = userAnswerRepo.findAll();

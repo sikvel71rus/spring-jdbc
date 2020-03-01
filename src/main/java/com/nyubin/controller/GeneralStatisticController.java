@@ -17,9 +17,7 @@ public class GeneralStatisticController {
 
     @GetMapping("/generalStatistic")
     public String getGeneralStatisric(@PathVariable Long id){
-
         return generalStatisticService.getGeneralStatisric(id);
-
     }
 
 

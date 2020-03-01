@@ -17,12 +17,8 @@ public class UserStatisticController {
     @Autowired
     private UserStatisticService userStatisticService;
 
-
-
-
     @GetMapping("/userStatistic/{name}")
     public String getUserStatistic(@PathVariable String name){
-
         return userStatisticService.getUserStatistic(name);
     }
 
