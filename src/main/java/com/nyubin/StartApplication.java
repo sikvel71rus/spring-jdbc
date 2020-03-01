@@ -113,7 +113,7 @@ public class StartApplication implements CommandLineRunner {
             userAnswerRepo.save(userAnswer1);
             userAnswer.addUser(user);
             userAnswer.addQuestion(questionData);
-            userAnswerRepo.save(userAnswer);
+//            userAnswerRepo.save(userAnswer);
 
 
             Iterable<UserAnswer> all = userAnswerRepo.findAll();
@@ -127,7 +127,7 @@ public class StartApplication implements CommandLineRunner {
 
             UserScore userScore = new UserScore();
             userScore.setUserId(1L);
-            userScore.setUserScore(4L);
+            userScore.setUserScore(0L);
             userScoreRepo.save(userScore);
 
             Iterable<UserScore> all2 = userScoreRepo.findAll();

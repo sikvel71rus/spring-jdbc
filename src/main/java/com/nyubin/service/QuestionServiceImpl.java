@@ -84,7 +84,22 @@ public class QuestionServiceImpl implements QuestionService {
 
         int questionIndex = (int)(Math.random() * ++maxIndex);
 
-        return questionDataRepo.findById(allIds.get(questionIndex));
+        return deleteAnswersFromQueestion(questionDataRepo.findById(allIds.get(questionIndex)));
     }
 
+
+    private Optional<QuestionData> deleteAnswersFromQueestion(Optional<QuestionData> questionData){
+
+
+
+        if (questionData.get().getAnswerDataSet().size() == 1){
+            questionData.get().setAnswerDataSet(null);
+        }else{
+            for (AnswerData answerData:questionData.get().getAnswerDataSet()
+                 ) {
+                answerData.setRight(false);
+            }
+        }
+        return questionData;
+    }
 }

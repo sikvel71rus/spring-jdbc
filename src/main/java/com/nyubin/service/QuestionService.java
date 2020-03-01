@@ -14,7 +14,7 @@ public interface QuestionService {
 
     QuestionData save(QuestionData questionData);
 
-    public Optional<QuestionData> findRandomQuestion(User user);
+    Optional<QuestionData> findRandomQuestion(User user);
 
 
 }

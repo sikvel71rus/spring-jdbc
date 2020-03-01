@@ -49,4 +49,9 @@ public class UserServiceImpl implements UserService {
         return userRepo.count();
     }
 
+    public Long findIdByUserName(String name){
+
+        return userRepo.findIdByUserName(name);
+    }
+
 }
