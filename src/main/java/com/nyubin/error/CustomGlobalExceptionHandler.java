@@ -35,10 +35,15 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         response.sendError(HttpStatus.NOT_ACCEPTABLE.value());
     }
 
+    @ExceptionHandler(UserAlreadyPassedQuestionException.class)
+    public void springHandleUserAlreadyPassedQuestion(HttpServletResponse response) throws IOException {
+        response.sendError(HttpStatus.NOT_ACCEPTABLE.value());
+    }
 
-
-
-
+    @ExceptionHandler(UserAlreadyPassedTestException.class)
+    public void springHandleUserAlreadyPassedTestException(HttpServletResponse response) throws IOException {
+        response.sendError(HttpStatus.NOT_ACCEPTABLE.value());
+    }
 
 
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,

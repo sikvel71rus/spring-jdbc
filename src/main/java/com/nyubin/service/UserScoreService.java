@@ -17,6 +17,8 @@ public interface UserScoreService {
 
     UserScore save(UserScore userScore);
 
+    Long findUserScoreByUserId(Long id);
+
 
 
 

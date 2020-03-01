@@ -23,8 +23,8 @@ public class UserScoreServiceImpl implements UserScoreService {
         return userScoreRepo.countComplitedAllQuestionRight();
     }
 
-    public Long countRightAnswers(User user) {
-        return userScoreRepo.findUserScoreByUserId(user.getId());
+    public Long findUserScoreByUserId(Long id) {
+        return userScoreRepo.findUserScoreByUserId(id);
     }
 
     public Double percentageWithLargerScore(Long id) {

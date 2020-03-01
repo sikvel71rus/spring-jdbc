@@ -1,5 +1,6 @@
 package com.nyubin.service;
 
+import com.nyubin.error.UserAlreadyPassedQuestionException;
 import com.nyubin.model.*;
 import com.nyubin.repository.QuestionDataRepo;
 import com.nyubin.repository.UserAnswerRepo;
@@ -39,7 +40,7 @@ public class UserAnswerServiceImpl implements UserAnswerService {
         //TODO нужна ли эта проверка
 
         if(!questionDataRepo.findAllIds().contains(newUserAnswer.getQuestionId())){
-            System.out.println("Всё плохо!");
+            throw new UserAlreadyPassedQuestionException();
         }
         //TODO обработать optional
         Optional<QuestionData> byId = questionDataRepo.findById(newUserAnswer.getQuestionId());

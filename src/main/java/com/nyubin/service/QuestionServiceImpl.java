@@ -1,10 +1,12 @@
 package com.nyubin.service;
 
 import com.nyubin.error.NotEnoughQuestionsException;
+import com.nyubin.error.UserAlreadyPassedTestException;
 import com.nyubin.error.WrongQuestionCompilationException;
 import com.nyubin.model.AnswerData;
 import com.nyubin.model.QuestionData;
 import com.nyubin.model.User;
+import com.nyubin.model.UserScore;
 import com.nyubin.repository.QuestionDataRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Autowired
     private UserAnswerService userAnswerService;
+
+    @Autowired
+    private UserScoreService userScoreService;
 
 
     @Override
@@ -72,6 +77,9 @@ public class QuestionServiceImpl implements QuestionService {
         if(questionDataRepo.count()<5){
             throw new NotEnoughQuestionsException();
         }
+        if(userScoreService.findUserScoreByUserId(user.getId()) != null){
+            throw new UserAlreadyPassedTestException();
+        }
 
         Long userId = user.getId();
 
@@ -87,6 +95,7 @@ public class QuestionServiceImpl implements QuestionService {
                 }
             }
         }
+        //TODO check
         int maxIndex = allIds.size() -1;
 
         int questionIndex = (int)(Math.random() * ++maxIndex);
