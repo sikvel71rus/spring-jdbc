@@ -24,8 +24,4 @@ public interface UserAnswerService {
     List<UserAnswer> findAllAnswerDataByUser(Long id);
 
 
-
-
-
-
 }

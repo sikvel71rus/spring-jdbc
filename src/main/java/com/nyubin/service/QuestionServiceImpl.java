@@ -1,5 +1,7 @@
 package com.nyubin.service;
 
+import com.nyubin.error.NotEnoughQuestionsException;
+import com.nyubin.error.WrongQuestionCompilationException;
 import com.nyubin.model.AnswerData;
 import com.nyubin.model.QuestionData;
 import com.nyubin.model.User;
@@ -42,12 +44,12 @@ public class QuestionServiceImpl implements QuestionService {
 
         //TODO убрать костылец
         if (answerDataSet.size() == 0 || answerDataSet.size() > 4) {
-            System.out.println("Всё плохо");
+            throw new WrongQuestionCompilationException();
         }
 
         if (answerDataSet.size() == 1 &&
                 !(Boolean.TRUE).equals(answerDataSet.stream().findFirst().get().isRight())) {
-            System.out.println("Всё плохо");
+            throw new WrongQuestionCompilationException();
         }
 
         int trueAnswersCount = 0;
@@ -59,13 +61,17 @@ public class QuestionServiceImpl implements QuestionService {
             }
         }
         if (trueAnswersCount !=1){
-            System.out.println("Всё плохо");
+            throw new WrongQuestionCompilationException();
         }
 
         return questionDataRepo.save(questionData);
     }
 
     public Optional<QuestionData> findRandomQuestion(User user){
+
+        if(questionDataRepo.count()<5){
+            throw new NotEnoughQuestionsException();
+        }
 
         Long userId = user.getId();
 

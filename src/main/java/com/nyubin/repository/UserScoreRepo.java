@@ -16,7 +16,6 @@ public interface UserScoreRepo extends CrudRepository<UserScore,Long> {
 
     @Query("select count(*) from userscore " +
             "where user_score < :inUserscore")
-    //TODO переделать в опшинал или добавить проверку на null
     Long findCountWithLowerUserScore(@Param("inUserscore") Long userscore);
 
     @Query("select count(*) from userscore " +

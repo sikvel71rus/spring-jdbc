@@ -1,9 +1,6 @@
 package com.nyubin.controller;
 
-import com.nyubin.model.UserScore;
 import com.nyubin.service.GeneralStatisticService;
-import com.nyubin.service.UserScoreService;
-import com.nyubin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +14,7 @@ public class GeneralStatisticController {
 
     @GetMapping("/generalStatistic")
     public String getGeneralStatisric(@PathVariable Long id){
-        return generalStatisticService.getGeneralStatisric(id);
+        return generalStatisticService.getGeneralStatistic(id);
     }
 
 

@@ -25,10 +25,18 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         response.sendError(HttpStatus.NOT_FOUND.value());
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
+    @ExceptionHandler(NotEnoughQuestionsException.class)
     public void springHandleNotAcceptable(HttpServletResponse response) throws IOException {
         response.sendError(HttpStatus.NOT_ACCEPTABLE.value());
     }
+
+    @ExceptionHandler(WrongQuestionCompilationException.class)
+    public void springHandleWrongQuestionCompilation(HttpServletResponse response) throws IOException {
+        response.sendError(HttpStatus.NOT_ACCEPTABLE.value());
+    }
+
+
+
 
 
 

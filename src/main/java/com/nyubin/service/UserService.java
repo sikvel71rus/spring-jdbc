@@ -14,9 +14,13 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
 
     String addUser(User user);
+
     List<User> findAll();
+
     UserDetails loadUserByUsername(String var1) throws UsernameNotFoundException;
+
     Long countUsers();
+
     Long findIdByUserName(String name);
 
 
