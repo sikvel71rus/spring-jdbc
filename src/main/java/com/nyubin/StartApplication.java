@@ -4,6 +4,7 @@ import com.nyubin.model.*;
 import com.nyubin.repository.QuestionDataRepo;
 import com.nyubin.repository.UserAnswerRepo;
 import com.nyubin.repository.UserRepo;
+import com.nyubin.repository.UserScoreRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class StartApplication implements CommandLineRunner {
 
         @Autowired
         private UserAnswerRepo userAnswerRepo;
+
+        @Autowired
+        private UserScoreRepo userScoreRepo;
 
         @Bean
         public LobHandler lobHandler() {
@@ -118,6 +122,15 @@ public class StartApplication implements CommandLineRunner {
             User funnyUser = userRepo.findByUsername("funnyUser");
 
             List<Long> allIds = questionDataRepo.findAllIds();
+
+
+
+            UserScore userScore = new UserScore();
+            userScore.setUserId(1L);
+            userScore.setUserScore(4L);
+            userScoreRepo.save(userScore);
+
+            Iterable<UserScore> all2 = userScoreRepo.findAll();
 
 
         }

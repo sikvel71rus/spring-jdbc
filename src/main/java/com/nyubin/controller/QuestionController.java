@@ -2,10 +2,12 @@ package com.nyubin.controller;
 
 
 import com.nyubin.model.QuestionData;
+import com.nyubin.model.User;
 import com.nyubin.repository.QuestionDataRepo;
 import com.nyubin.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,6 +48,9 @@ public class QuestionController {
     QuestionData save(@RequestBody QuestionData questionData){
         return questionService.save(questionData);
     }
+
+    @GetMapping("/questionrandom")
+    Optional<QuestionData> findRandomQuestion(@AuthenticationPrincipal User user){return questionService.findRandomQuestion(user);}
 
 
 

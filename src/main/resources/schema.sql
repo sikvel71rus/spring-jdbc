@@ -37,6 +37,13 @@ user_id long references users(id),
 question_id long references questions_data(id),
 is_right boolean);
 
+DROP TABLE userscore if EXISTS;
+CREATE TABLE userscore(
+id serial primary key,
+user_id long references users(id),
+user_score long);
+
+
 --drop table answer_user if exists;
 --create table answer_user(
 --user long,

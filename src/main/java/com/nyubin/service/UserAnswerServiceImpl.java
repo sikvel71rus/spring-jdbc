@@ -7,6 +7,7 @@ import com.nyubin.model.UserAnswer;
 import com.nyubin.repository.QuestionDataRepo;
 import com.nyubin.repository.UserAnswerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,6 +56,11 @@ public class UserAnswerServiceImpl implements UserAnswerService {
         }
         return userAnswerRepo.save(newUserAnswer);
 
+    }
+
+    public List<Long> findAllQuestionIdsByUser(Long id){
+
+        return userAnswerRepo.findAllQuestionIdsbyUser(id);
     }
 
 }

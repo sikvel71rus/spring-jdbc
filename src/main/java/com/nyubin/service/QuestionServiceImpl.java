@@ -2,11 +2,10 @@ package com.nyubin.service;
 
 import com.nyubin.model.AnswerData;
 import com.nyubin.model.QuestionData;
+import com.nyubin.model.User;
 import com.nyubin.repository.QuestionDataRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +16,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Autowired
     private QuestionDataRepo questionDataRepo;
+
+    @Autowired
+    private UserAnswerService userAnswerService;
 
 
     @Override
@@ -61,4 +63,28 @@ public class QuestionServiceImpl implements QuestionService {
 
         return questionDataRepo.save(questionData);
     }
+
+    public Optional<QuestionData> findRandomQuestion(User user){
+
+        Long userId = user.getId();
+
+        List<Long> allIds = questionDataRepo.findAllIds();
+
+        List<Long> allQuestionIdsbyUser = userAnswerService.findAllQuestionIdsByUser(userId);
+
+        if(allQuestionIdsbyUser != null) {
+            for (Long questionId : allQuestionIdsbyUser
+            ) {
+                if (allIds.contains(questionId)) {
+                    allIds.remove(questionId);
+                }
+            }
+        }
+        int maxIndex = allIds.size() -1;
+
+        int questionIndex = (int)(Math.random() * ++maxIndex);
+
+        return questionDataRepo.findById(allIds.get(questionIndex));
+    }
+
 }

@@ -17,6 +17,8 @@ public interface UserAnswerService {
 
     UserAnswer save(UserAnswer newUserAnswer, User user);
 
+    List<Long> findAllQuestionIdsByUser(Long id);
+
 
 
 

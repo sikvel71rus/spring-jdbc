@@ -45,14 +45,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
 //                HTTP Basic authentication
                 .httpBasic()
-                .and()
-                .logout()
-//                .logoutUrl("/logout")
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .clearAuthentication(true)
-                .logoutSuccessUrl("/logout.done")
-//                .deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true)
+//                .and()
+//                .logout()
+////                .logoutUrl("/logout")
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                .clearAuthentication(true)
+//                .logoutSuccessUrl("/logout.done")
+////                .deleteCookies("JSESSIONID")
+//                .invalidateHttpSession(true)
 //                .logoutSuccessUrl("/")
 //                .authorizeRequests()
 //                .and()
@@ -64,19 +64,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .logoutSuccessUrl("/login?logout")
 //                .invalidateHttpSession(true)
             .and()
+
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll()
+//                .and()
                 .headers()
                 .frameOptions()
                 .disable()
             .and()
                 .authorizeRequests()
-                .antMatchers("/registration","/h2-console").permitAll();
-//                .anyRequest().authenticated();
+                .antMatchers("/registration","/h2-console").permitAll()
+                .anyRequest().authenticated()
 //                .antMatchers(HttpMethod.GET, "/questions/**").hasRole("USER")
 //                .antMatchers(HttpMethod.POST, "/questions").hasRole("USER")
 //                .antMatchers(HttpMethod.GET, "/useranswers/**").hasRole("USER")
 //                .antMatchers(HttpMethod.POST, "/useranswers").hasRole("USER")
-//            .and()
-//                .csrf().disable();
+            .and()
+                .csrf().disable();
 //                .formLogin().disable();
 
 

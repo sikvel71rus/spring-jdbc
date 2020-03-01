@@ -20,25 +20,22 @@ public class User implements UserDetails {
     @Column("user_name")
     private String username;
     private String password;
-    private Float userScore;
     private Set<Role> roles = new HashSet<>();
 
 
     public User() {
     }
 
-    public User(Long id, String username, String password, Float userScore, Set<Role> roles) {
+    public User(Long id, String username, String password, Set<Role> roles) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.userScore = userScore;
         this.roles = roles;
     }
 
-    public User(String username, String password, Float userScore, Set<Role> roles) {
+    public User(String username, String password, Set<Role> roles) {
         this.username = username;
         this.password = password;
-        this.userScore = userScore;
         this.roles = roles;
     }
 
@@ -65,15 +62,7 @@ public class User implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public Float getUserScore() {
-        return userScore;
-    }
-
-    public void setUserScore(Float userScore) {
-        this.userScore = userScore;
-    }
-
+    
     public Set<Role> getRoles() {
         return roles;
     }
