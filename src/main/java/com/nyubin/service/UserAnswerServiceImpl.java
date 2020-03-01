@@ -83,21 +83,6 @@ public class UserAnswerServiceImpl implements UserAnswerService {
     }
 
 
-
-//    public List<Map<String,String>> getQuestionAndAnswerList(User user){
-//        Map<String, String> stringMap = new HashMap<String, String>();
-//        List<Long> allQuestionIdsbyUser = userAnswerRepo.findAllQuestionIdsbyUser(user.getId());
-//
-//
-//
-//    }
-//
-//
-//    private List<QuestionData> findAllQuestionsbyUser(Long id){
-//
-//        return userAnswerRepo.findAllQuestionsbyUser(id);
-//    }
-
 }
 
 

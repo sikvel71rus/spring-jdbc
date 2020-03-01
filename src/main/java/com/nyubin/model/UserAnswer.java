@@ -78,14 +78,6 @@ public class UserAnswer {
         return userAnswer;
     }
 
-//    public Set<QuestionRef> getQuestions() {
-//        return questions;
-//    }
-//
-//    public void setQuestions(Set<QuestionRef> questions) {
-//        this.questions = questions;
-//    }
-
     public void setUserAnswer(String userAnswer) {
         this.userAnswer = userAnswer;
     }
@@ -97,14 +89,6 @@ public class UserAnswer {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
-
-//    public void addUserRef(User user){
-//        this.users.add(new UserRef(user.getId()));
-//    }
-//    public void addUserRef(User user){
-//        this.users = new UserRef(user.getId());
-//    }
-
 
     public Long getQuestionId() {
         return questionId;

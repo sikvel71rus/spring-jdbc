@@ -2,8 +2,6 @@ package com.nyubin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class GeneralStatisticServiceImpl implements GeneralStatisticService {
@@ -20,7 +18,7 @@ public class GeneralStatisticServiceImpl implements GeneralStatisticService {
 
         Long countUsersComplitedTest = userScoreService.count();
 
-        Long countUsersComplitedAllQuestionRight = userScoreService.countComplitedAllquestionRight();
+        Long countUsersComplitedAllQuestionRight = userScoreService.countComplitedAllQuestionRight();
 
         String resultStatistic = "Пользователей зарегистрированно :" + countUsers + "\n"
                 + "Пользователей, закончивших тестирование:" + countUsersComplitedTest + "\n"

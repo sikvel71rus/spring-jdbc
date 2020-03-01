@@ -9,9 +9,5 @@ public interface UserAnswerResponseService {
 
     List<UserAnswerResponse> getUserAnswersResponse(User user);
 
-
-
-
-
 }
 

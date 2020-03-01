@@ -34,12 +34,13 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public QuestionData save(QuestionData questionData) {
 
-        if (questionDataRepo.count() >= 5) {
-            System.out.println("Всё плохо");
-        }
+//        if (questionDataRepo.count() < 5) {
+//            System.out.println("Всё плохо");
+//        }
 
         Set<AnswerData> answerDataSet = questionData.getAnswerDataSet();
 
+        //TODO убрать костылец
         if (answerDataSet.size() == 0 || answerDataSet.size() > 4) {
             System.out.println("Всё плохо");
         }

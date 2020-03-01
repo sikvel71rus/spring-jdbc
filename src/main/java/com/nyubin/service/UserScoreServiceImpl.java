@@ -19,7 +19,7 @@ public class UserScoreServiceImpl implements UserScoreService {
     }
 
     @Override
-    public Long countComplitedAllquestionRight() {
+    public Long countComplitedAllQuestionRight() {
         return userScoreRepo.countComplitedAllQuestionRight();
     }
 

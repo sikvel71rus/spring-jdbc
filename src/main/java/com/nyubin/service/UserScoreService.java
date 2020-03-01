@@ -6,7 +6,7 @@ import com.nyubin.model.UserScore;
 public interface UserScoreService {
 
     public Long countComplitedTesting();
-    public Long countComplitedAllquestionRight();
+    public Long countComplitedAllQuestionRight();
     public Double percentageWithLargerScore(Long id);
     public Double percentageWithLowerScore(Long id);
     public Long count();

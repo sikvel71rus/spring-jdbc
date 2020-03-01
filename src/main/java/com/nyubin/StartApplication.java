@@ -110,6 +110,7 @@ public class StartApplication implements CommandLineRunner {
 //            userAnswer.addQuestionRef(questionData);
             UserAnswer userAnswer1 = new UserAnswer();
             userAnswer1.setUserAnswer("Смешной ответ");
+            userAnswer1.addUser(user);
             userAnswerRepo.save(userAnswer1);
             userAnswer.addUser(user);
             userAnswer.addQuestion(questionData);

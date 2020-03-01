@@ -19,8 +19,6 @@ public class UserStatisticServiceImpl implements UserStatisticService {
     private UserScoreService userScoreService;
 
 
-
-
     public String getUserStatistic(String name){
         Long userId = userService.findIdByUserName(name);
 
