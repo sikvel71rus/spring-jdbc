@@ -13,8 +13,8 @@ public class GeneralStatisticController {
     private GeneralStatisticService generalStatisticService;
 
     @GetMapping("/generalStatistic")
-    public String getGeneralStatisric(@PathVariable Long id){
-        return generalStatisticService.getGeneralStatistic(id);
+    public String getGeneralStatisric(){
+        return generalStatisticService.getGeneralStatistic();
     }
 
 

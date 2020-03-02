@@ -38,6 +38,7 @@ public class UserAnswerController {
     @PostMapping("/useranswers")
     @ResponseStatus(HttpStatus.CREATED)
     UserAnswer save(@RequestBody UserAnswer newUserAnswer, @AuthenticationPrincipal User user){
+        //TODO удалить
         newUserAnswer.setUserId(user.getId());
         return userAnswerService.save(newUserAnswer, user);
     }

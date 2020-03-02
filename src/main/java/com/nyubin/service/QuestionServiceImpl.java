@@ -48,7 +48,7 @@ public class QuestionServiceImpl implements QuestionService {
         Set<AnswerData> answerDataSet = questionData.getAnswerDataSet();
 
         //TODO убрать костылец
-        if (answerDataSet.size() == 0 || answerDataSet.size() > 4) {
+        if (!(answerDataSet.size() == 1 || answerDataSet.size() == 4)) {
             throw new WrongQuestionCompilationException();
         }
 
@@ -75,10 +75,10 @@ public class QuestionServiceImpl implements QuestionService {
     public Optional<QuestionData> findRandomQuestion(User user){
 
         if(questionDataRepo.count()<5){
-//            throw new NotEnoughQuestionsException();
+            throw new NotEnoughQuestionsException();
         }
         if(userScoreService.findUserScoreByUserId(user.getId()) != null){
-//            throw new UserAlreadyPassedTestException();
+            throw new UserAlreadyPassedTestException();
         }
 
         Long userId = user.getId();

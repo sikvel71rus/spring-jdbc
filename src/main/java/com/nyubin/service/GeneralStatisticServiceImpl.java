@@ -12,7 +12,7 @@ public class GeneralStatisticServiceImpl implements GeneralStatisticService {
     @Autowired
     private UserScoreService userScoreService;
 
-    public String getGeneralStatistic(Long id) {
+    public String getGeneralStatistic() {
 
         Long countUsers = userService.countUsers();
 

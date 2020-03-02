@@ -57,7 +57,7 @@ public class StartApplication implements CommandLineRunner {
         public void run(String... args) throws Exception {
 
             log.info("StartApplication...");
-            startQuestionApp();
+//            startQuestionApp();
 
         }
 
