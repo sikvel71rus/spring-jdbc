@@ -75,10 +75,10 @@ public class QuestionServiceImpl implements QuestionService {
     public Optional<QuestionData> findRandomQuestion(User user){
 
         if(questionDataRepo.count()<5){
-            throw new NotEnoughQuestionsException();
+//            throw new NotEnoughQuestionsException();
         }
         if(userScoreService.findUserScoreByUserId(user.getId()) != null){
-            throw new UserAlreadyPassedTestException();
+//            throw new UserAlreadyPassedTestException();
         }
 
         Long userId = user.getId();
