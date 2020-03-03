@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 @Service
 public class UserScoreServiceImpl implements UserScoreService {
 
@@ -36,7 +39,7 @@ public class UserScoreServiceImpl implements UserScoreService {
             return Double.valueOf(0);
         }
 
-        return ((double)countWithLargerUserScore / (double)count) * 100;
+        return roundDoubleValue(((double)countWithLargerUserScore / (double)count) * 100);
 
     }
     public Double percentageWithLowerScore(Long id) {
@@ -50,7 +53,7 @@ public class UserScoreServiceImpl implements UserScoreService {
             return Double.valueOf(0);
         }
 
-        return ((double)countWithLargerUserScore / (double)count) * 100;
+        return roundDoubleValue(((double)countWithLargerUserScore / (double)count) * 100);
     }
 
     public Long count(){
@@ -58,6 +61,14 @@ public class UserScoreServiceImpl implements UserScoreService {
     }
     public UserScore save(UserScore userScore){
         return userScoreRepo.save(userScore);
+    }
+
+
+
+    private Double roundDoubleValue(Double doubleValue){
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+        return Double.valueOf(df.format(doubleValue));
     }
 
 
