@@ -77,7 +77,7 @@ public class QuestionServiceImpl implements QuestionService {
             answerNames.add(answerData.getName());
 
         }
-        
+
         if (trueAnswersCount !=1){
             throw new WrongQuestionCompilationException();
         }
