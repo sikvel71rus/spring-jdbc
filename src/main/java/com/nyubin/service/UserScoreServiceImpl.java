@@ -32,6 +32,9 @@ public class UserScoreServiceImpl implements UserScoreService {
 //        Long countWithLargerUserScore = userScoreRepo.findCountWithLargerUserScore(user.getId());
         Long countWithLargerUserScore = userScoreRepo.findCountWithLargerUserScore(id);
         long count = userScoreRepo.count();
+        if (count == 0){
+            return Double.valueOf(0);
+        }
 
         return ((double)countWithLargerUserScore / (double)count) * 100;
 
@@ -43,6 +46,9 @@ public class UserScoreServiceImpl implements UserScoreService {
 
         long count = userScoreRepo.count();
 
+        if (count == 0){
+            return Double.valueOf(0);
+        }
 
         return ((double)countWithLargerUserScore / (double)count) * 100;
     }

@@ -19,10 +19,12 @@ public class UserStatisticController {
     private UserStatisticService userStatisticService;
 
     //TODO ИСПАРАВИТЬ ЭТО НЕМЕДЛЕННО!!!!
-    @GetMapping("/userStatistic/{name}")
+
 //    public String getUserStatistic(@PathVariable String name){
 //        return userStatisticService.getUserStatistic(name);
 //    }
+//@GetMapping("/userStatistic/{name}")
+    @GetMapping("/userStatistic")
     public String getUserStatistic(@RequestParam String name){
         return userStatisticService.getUserStatistic(name);
     }
