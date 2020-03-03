@@ -11,6 +11,7 @@ import com.nyubin.repository.QuestionDataRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -41,9 +42,6 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public QuestionData save(QuestionData questionData) {
 
-//        if (questionDataRepo.count() < 5) {
-//            System.out.println("Всё плохо");
-//        }
 
         Set<AnswerData> answerDataSet = questionData.getAnswerDataSet();
 
@@ -59,12 +57,27 @@ public class QuestionServiceImpl implements QuestionService {
 
         int trueAnswersCount = 0;
 
+
+        HashSet<String> answerNames = new HashSet<>();
+
+
         for (AnswerData answerData : questionData.getAnswerDataSet()
         ) {
             if ((Boolean.TRUE).equals(answerData.isRight())){
                 trueAnswersCount++;
             }
+
+            if (answerData.getName() == ""){
+                throw new WrongQuestionCompilationException();
+            }
+
+            if (answerNames.contains(answerData.getName())){
+                throw new WrongQuestionCompilationException();
+            }
+            answerNames.add(answerData.getName());
+
         }
+        
         if (trueAnswersCount !=1){
             throw new WrongQuestionCompilationException();
         }
