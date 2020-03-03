@@ -19,7 +19,6 @@ import org.springframework.jdbc.support.lob.LobHandler;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @SpringBootApplication
 public class StartApplication implements CommandLineRunner {
@@ -63,38 +62,38 @@ public class StartApplication implements CommandLineRunner {
 
         private void startQuestionApp(){
 
-            QuestionData questionData = new QuestionData();
+            Question question = new Question();
 
-            questionData.setName("testname");
+            question.setName("testname");
 
-            AnswerData answerData = new AnswerData();
-            answerData.setName("asd1");
-            answerData.setRight(Boolean.TRUE);
-            AnswerData answerData1 = new AnswerData();
-            answerData1.setName("asd2");
-            HashSet<AnswerData> answerDataHashSet = new HashSet<>();
-            answerDataHashSet.add(answerData);
-            answerDataHashSet.add(answerData1);
-            questionData.setAnswerDataSet(answerDataHashSet);
+            Answer answer = new Answer();
+            answer.setName("asd1");
+            answer.setRight(Boolean.TRUE);
+            Answer answer1 = new Answer();
+            answer1.setName("asd2");
+            HashSet<Answer> answerHashSet = new HashSet<>();
+            answerHashSet.add(answer);
+            answerHashSet.add(answer1);
+            question.setAnswerSet(answerHashSet);
 
             QuestionType questionType = new QuestionType();
             questionType.setName("Свободный выбор ответа");
             questionType.setId(1L);
-//            questionData.setQuestionType(questionType);
+//            question.setQuestionType(questionType);
 
-            questionDataRepo.save(questionData);
+            questionDataRepo.save(question);
 
-            QuestionData questionData1 = new QuestionData();
+            Question question1 = new Question();
 
-            questionData1.setName("testname1");
+            question1.setName("testname1");
 
 
-            questionDataRepo.save(questionData);
+            questionDataRepo.save(question);
 
-            questionDataRepo.save(questionData1);
+            questionDataRepo.save(question1);
 
-            Iterable<QuestionData> all3 = questionDataRepo.findAll();
-            Iterable<QuestionData> allById = questionDataRepo.findAllById(Collections.singleton(1L));
+            Iterable<Question> all3 = questionDataRepo.findAll();
+            Iterable<Question> allById = questionDataRepo.findAllById(Collections.singleton(1L));
 
             User user = new User();
             user.setUsername("1");
@@ -107,13 +106,13 @@ public class StartApplication implements CommandLineRunner {
 
             userAnswer.setUserAnswer("Bryak");
 //            userAnswer.addUserRef(user);
-//            userAnswer.addQuestionRef(questionData);
+//            userAnswer.addQuestionRef(question);
             UserAnswer userAnswer1 = new UserAnswer();
             userAnswer1.setUserAnswer("Смешной ответ");
             userAnswer1.addUser(user);
             userAnswerRepo.save(userAnswer1);
             userAnswer.addUser(user);
-            userAnswer.addQuestion(questionData);
+            userAnswer.addQuestion(question);
             userAnswerRepo.save(userAnswer);
 
 

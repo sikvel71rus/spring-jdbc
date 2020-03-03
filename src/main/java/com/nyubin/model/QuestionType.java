@@ -11,15 +11,15 @@ public class QuestionType {
     @Id
     private Long id;
     private String name;
-//    private Set<QuestionData> questionDataSet;
+//    private Set<Question> questionDataSet;
 
     public QuestionType() {
     }
 
-    public QuestionType(Long id, String name, Set<QuestionData> questionDataSet) {
+    public QuestionType(Long id, String name, Set<Question> questionSet) {
         this.id = id;
         this.name = name;
-//        this.questionDataSet = questionDataSet;
+//        this.questionSet = questionSet;
     }
 
     public QuestionType(String name) {

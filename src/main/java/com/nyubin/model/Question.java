@@ -1,32 +1,31 @@
 package com.nyubin.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Table("questions_data")
-public class QuestionData {
+@Table("questions")
+public class Question {
     @Id
     private Long id;
     private String name;
-    private Set<AnswerData> answerDataSet = new HashSet<>();
+    private Set<Answer> answerSet = new HashSet<>();
 //    private QuestionType questionType;
 
-    public QuestionData(){}
+    public Question(){}
 
-    public QuestionData(Long id, String name, Set<AnswerData> answerDataSet, QuestionType questionType) {
+    public Question(Long id, String name, Set<Answer> answerSet, QuestionType questionType) {
         this.id = id;
         this.name = name;
-        this.answerDataSet = answerDataSet;
+        this.answerSet = answerSet;
 //        this.questionType = questionType;
     }
 
-    public QuestionData(String name, Set<AnswerData> answerDataSet, QuestionType questionType) {
+    public Question(String name, Set<Answer> answerSet, QuestionType questionType) {
         this.name = name;
-        this.answerDataSet = answerDataSet;
+        this.answerSet = answerSet;
 //        this.questionType = questionType;
     }
 
@@ -46,12 +45,12 @@ public class QuestionData {
         this.name = name;
     }
 
-    public Set<AnswerData> getAnswerDataSet() {
-        return answerDataSet;
+    public Set<Answer> getAnswerSet() {
+        return answerSet;
     }
 
-    public void setAnswerDataSet(Set<AnswerData> answerDataSet) {
-        this.answerDataSet = answerDataSet;
+    public void setAnswerSet(Set<Answer> answerSet) {
+        this.answerSet = answerSet;
     }
 
 //    public QuestionType getQuestionType() {

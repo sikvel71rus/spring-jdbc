@@ -3,10 +3,9 @@ package com.nyubin.service;
 import com.nyubin.error.NotEnoughQuestionsException;
 import com.nyubin.error.UserAlreadyPassedTestException;
 import com.nyubin.error.WrongQuestionCompilationException;
-import com.nyubin.model.AnswerData;
-import com.nyubin.model.QuestionData;
+import com.nyubin.model.Answer;
+import com.nyubin.model.Question;
 import com.nyubin.model.User;
-import com.nyubin.model.UserScore;
 import com.nyubin.repository.QuestionDataRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,28 +29,28 @@ public class QuestionServiceImpl implements QuestionService {
 
 
     @Override
-    public List<QuestionData> findAll() {
-        return (List<QuestionData>) questionDataRepo.findAll();
+    public List<Question> findAll() {
+        return (List<Question>) questionDataRepo.findAll();
     }
 
     @Override
-    public Optional<QuestionData> findById(Long id) {
+    public Optional<Question> findById(Long id) {
         return questionDataRepo.findById(id);
     }
 
     @Override
-    public QuestionData save(QuestionData questionData) {
+    public Question save(Question question) {
 
 
-        Set<AnswerData> answerDataSet = questionData.getAnswerDataSet();
+        Set<Answer> answerSet = question.getAnswerSet();
 
-        //TODO убрать костылец
-        if (!(answerDataSet.size() == 1 || answerDataSet.size() == 4)) {
+
+        if (!(answerSet.size() == 1 || answerSet.size() == 4)) {
             throw new WrongQuestionCompilationException();
         }
 
-        if (answerDataSet.size() == 1 &&
-                !(Boolean.TRUE).equals(answerDataSet.stream().findFirst().get().isRight())) {
+        if (answerSet.size() == 1 &&
+                !(Boolean.TRUE).equals(answerSet.stream().findFirst().get().isRight())) {
             throw new WrongQuestionCompilationException();
         }
 
@@ -61,20 +60,20 @@ public class QuestionServiceImpl implements QuestionService {
         HashSet<String> answerNames = new HashSet<>();
 
 
-        for (AnswerData answerData : questionData.getAnswerDataSet()
+        for (Answer answer : question.getAnswerSet()
         ) {
-            if ((Boolean.TRUE).equals(answerData.isRight())){
+            if ((Boolean.TRUE).equals(answer.isRight())){
                 trueAnswersCount++;
             }
 
-            if (answerData.getName() == ""){
+            if (answer.getName() == ""){
                 throw new WrongQuestionCompilationException();
             }
 
-            if (answerNames.contains(answerData.getName())){
+            if (answerNames.contains(answer.getName())){
                 throw new WrongQuestionCompilationException();
             }
-            answerNames.add(answerData.getName());
+            answerNames.add(answer.getName());
 
         }
 
@@ -82,10 +81,10 @@ public class QuestionServiceImpl implements QuestionService {
             throw new WrongQuestionCompilationException();
         }
 
-        return questionDataRepo.save(questionData);
+        return questionDataRepo.save(question);
     }
 
-    public Optional<QuestionData> findRandomQuestion(User user){
+    public Optional<Question> findRandomQuestion(User user){
 
         if(questionDataRepo.count()<5){
             throw new NotEnoughQuestionsException();
@@ -122,16 +121,16 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
 
-    private Optional<QuestionData> deleteAnswersFromQuestion(Optional<QuestionData> questionData){
+    private Optional<Question> deleteAnswersFromQuestion(Optional<Question> questionData){
 
 
 
-        if (questionData.get().getAnswerDataSet().size() == 1){
-            questionData.get().setAnswerDataSet(null);
+        if (questionData.get().getAnswerSet().size() == 1){
+            questionData.get().setAnswerSet(null);
         }else{
-            for (AnswerData answerData:questionData.get().getAnswerDataSet()
+            for (Answer answer :questionData.get().getAnswerSet()
                  ) {
-                answerData.setRight(false);
+                answer.setRight(false);
             }
         }
         return questionData;

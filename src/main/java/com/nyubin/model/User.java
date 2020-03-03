@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Table("users")
-//TODO delete if unnecessary
 public class User implements UserDetails {
 
     @Id
@@ -71,7 +70,7 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    //TODO переделать костыль
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<Role> roles = new HashSet<>();

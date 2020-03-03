@@ -1,9 +1,8 @@
 package com.nyubin.controller;
 
 
-import com.nyubin.model.QuestionData;
+import com.nyubin.model.Question;
 import com.nyubin.model.User;
-import com.nyubin.repository.QuestionDataRepo;
 import com.nyubin.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,24 +32,24 @@ public class QuestionController {
 //    }
 
     @GetMapping("/questions")
-    List<QuestionData> findAll(){
+    List<Question> findAll(){
         return questionService.findAll();
     }
 
 
     @GetMapping("/questions/{id}")
-    Optional<QuestionData> findById(@PathVariable Long id){
+    Optional<Question> findById(@PathVariable Long id){
         return questionService.findById(id);
     }
 
     @PostMapping("/questions")
     @ResponseStatus(HttpStatus.CREATED)
-    QuestionData save(@RequestBody QuestionData questionData){
-        return questionService.save(questionData);
+    Question save(@RequestBody Question question){
+        return questionService.save(question);
     }
 
     @GetMapping("/questionRandom")
-    Optional<QuestionData> findRandomQuestion(@AuthenticationPrincipal User user){return questionService.findRandomQuestion(user);}
+    Optional<Question> findRandomQuestion(@AuthenticationPrincipal User user){return questionService.findRandomQuestion(user);}
 
 
 

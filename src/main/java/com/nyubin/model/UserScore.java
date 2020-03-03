@@ -3,7 +3,7 @@ package com.nyubin.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("userscore")
+@Table("user_scores")
 public class UserScore {
 
     @Id

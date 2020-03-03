@@ -3,10 +3,7 @@ package com.nyubin.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.HashSet;
-import java.util.Set;
-
-@Table("user_answer")
+@Table("user_answers")
 public class UserAnswer {
 
     @Id
@@ -58,11 +55,11 @@ public class UserAnswer {
 //    }
 
 
-//    public QuestionData getQuestion() {
+//    public Question getQuestion() {
 //        return question;
 //    }
 //
-//    public void setQuestion(QuestionData question) {
+//    public void setQuestion(Question question) {
 //        this.question = question;
 //    }
 
@@ -102,11 +99,11 @@ public class UserAnswer {
         this.userId = user.getId();
     }
 
-//    public void addQuestionRef(QuestionData questionData){
-//        this.questions.add(new QuestionRef(questionData.getId()));
+//    public void addQuestionRef(Question question){
+//        this.questions.add(new QuestionRef(question.getId()));
 //    }
-    public void addQuestion(QuestionData questionData){
-        this.questionId = questionData.getId();
+    public void addQuestion(Question question){
+        this.questionId = question.getId();
     }
 
 }

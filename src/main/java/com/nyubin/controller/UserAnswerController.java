@@ -29,20 +29,16 @@ public class UserAnswerController {
         return userAnswerService.findAll();
     }
 
-
     @GetMapping("/userAnswers/{id}")
     Optional<UserAnswer> findById(@PathVariable Long id){
         return userAnswerService.findById(id);
     }
-    //TODO Add check "id_question in questionIds"
+
     @PostMapping("/userAnswers")
     @ResponseStatus(HttpStatus.CREATED)
     UserAnswer save(@RequestBody UserAnswer newUserAnswer, @AuthenticationPrincipal User user){
-        //TODO удалить
-        newUserAnswer.setUserId(user.getId());
         return userAnswerService.save(newUserAnswer, user);
     }
-
 
     @GetMapping("/userAnswerResponse")
     List<UserAnswerResponse> getUserAnswersResponse(@AuthenticationPrincipal User user){

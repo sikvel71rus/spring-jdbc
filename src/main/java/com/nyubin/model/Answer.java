@@ -3,23 +3,23 @@ package com.nyubin.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("answer_data")
-public class AnswerData {
+@Table("answers")
+public class Answer {
 
     @Id
     private Long id;
     private String name;
     private boolean isRight;
 
-    public AnswerData(){}
+    public Answer(){}
 
-    public AnswerData(Long id, String name, Boolean isRight) {
+    public Answer(Long id, String name, Boolean isRight) {
         this.id = id;
         this.name = name;
         this.isRight = isRight;
     }
 
-    public AnswerData(String name, Boolean isRight) {
+    public Answer(String name, Boolean isRight) {
 
         this.name = name;
         this.isRight = isRight;

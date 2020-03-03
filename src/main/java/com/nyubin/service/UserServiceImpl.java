@@ -37,12 +37,9 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    //TODO check
+
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-
-//        User byUsername = userRepo.findByUsername(userName);
-
         return userRepo.findByUsername(userName);
     }
 

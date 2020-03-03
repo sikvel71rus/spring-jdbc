@@ -1,6 +1,6 @@
 package com.nyubin.service;
 
-import com.nyubin.model.QuestionData;
+import com.nyubin.model.Question;
 import com.nyubin.model.User;
 
 import java.util.List;
@@ -8,13 +8,13 @@ import java.util.Optional;
 
 public interface QuestionService {
 
-    List<QuestionData> findAll();
+    List<Question> findAll();
 
-    Optional<QuestionData> findById(Long id);
+    Optional<Question> findById(Long id);
 
-    QuestionData save(QuestionData questionData);
+    Question save(Question question);
 
-    Optional<QuestionData> findRandomQuestion(User user);
+    Optional<Question> findRandomQuestion(User user);
 
     String getQuestionNameById(Long id);
 

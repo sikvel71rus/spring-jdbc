@@ -7,18 +7,18 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserScoreRepo extends CrudRepository<UserScore,Long> {
 
-    @Query("select count(*) from userscore " +
+    @Query("select count(*) from user_scores " +
             "where user_score = 5")
     Long countComplitedAllQuestionRight();
 
-    @Query("select user_score from userscore where user_id = :id")
+    @Query("select user_score from user_scores where user_id = :id")
     Long findUserScoreByUserId(@Param("id") Long id);
 
-    @Query("select count(*) from userscore " +
+    @Query("select count(*) from user_scores " +
             "where user_score < :inUserscore")
     Long findCountWithLowerUserScore(@Param("inUserscore") Long userscore);
 
-    @Query("select count(*) from userscore " +
+    @Query("select count(*) from user_scores " +
             "where user_score > :inUserscore")
     Long findCountWithLargerUserScore(@Param("inUserscore") Long userscore);
 }
