@@ -1,5 +1,6 @@
 package com.nyubin.service;
 
+import com.nyubin.error.UserNotFoundException;
 import com.nyubin.model.Role;
 import com.nyubin.model.User;
 import com.nyubin.repository.UserRepo;
@@ -51,7 +52,11 @@ public class UserServiceImpl implements UserService {
 
     public Long findIdByUserName(String name){
 
-        return userRepo.findIdByUserName(name);
+        Long userId = userRepo.findIdByUserName(name);
+        if (userId == null){
+            throw new UserNotFoundException();
+        }
+        return userId;
     }
 
 }

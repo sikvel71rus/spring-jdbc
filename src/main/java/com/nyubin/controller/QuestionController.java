@@ -49,7 +49,7 @@ public class QuestionController {
         return questionService.save(questionData);
     }
 
-    @GetMapping("/questionrandom")
+    @GetMapping("/questionRandom")
     Optional<QuestionData> findRandomQuestion(@AuthenticationPrincipal User user){return questionService.findRandomQuestion(user);}
 
 

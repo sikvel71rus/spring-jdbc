@@ -24,18 +24,18 @@ public class UserAnswerController {
     @Autowired
     private UserAnswerResponseService userAnswerResponseService;
 
-    @GetMapping("/useranswers")
+    @GetMapping("/userAnswers")
     List<UserAnswer> findAll(){
         return userAnswerService.findAll();
     }
 
 
-    @GetMapping("/useranswers/{id}")
+    @GetMapping("/userAnswers/{id}")
     Optional<UserAnswer> findById(@PathVariable Long id){
         return userAnswerService.findById(id);
     }
     //TODO Add check "id_question in questionIds"
-    @PostMapping("/useranswers")
+    @PostMapping("/userAnswers")
     @ResponseStatus(HttpStatus.CREATED)
     UserAnswer save(@RequestBody UserAnswer newUserAnswer, @AuthenticationPrincipal User user){
         //TODO удалить
@@ -44,14 +44,8 @@ public class UserAnswerController {
     }
 
 
-    @GetMapping("/useranswerresponse")
+    @GetMapping("/userAnswerResponse")
     List<UserAnswerResponse> getUserAnswersResponse(@AuthenticationPrincipal User user){
         return userAnswerResponseService.getUserAnswersResponse(user);
     }
-
-
-
 }
-//    int answer(@RequestBody Answer newAnswer){
-//        return answerRepository.save(newAnswer);
-//    }
