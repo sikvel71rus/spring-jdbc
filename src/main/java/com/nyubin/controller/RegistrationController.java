@@ -13,18 +13,16 @@ public class RegistrationController {
     private UserService userService;
 
     @GetMapping("registration")
-    User getUser(){
+    User getUser() {
         return new User();
     }
 
 
     @PostMapping("/registration")
     @ResponseStatus(HttpStatus.CREATED)
-    String addUser(@RequestBody User user){
+    String addUser(@RequestBody User user) {
         return userService.addUser(user);
     }
-
-
 
 
 }

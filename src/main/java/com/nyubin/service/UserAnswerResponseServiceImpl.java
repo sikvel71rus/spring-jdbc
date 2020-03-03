@@ -26,10 +26,10 @@ public class UserAnswerResponseServiceImpl implements UserAnswerResponseService 
 
         List<UserAnswerResponse> userAnswerResponses = new ArrayList<>();
 
-        for (UserAnswer userAnswer:userAnswerService.findAllAnswerDataByUser(userId)
-             ) {
+        for (UserAnswer userAnswer : userAnswerService.findAllAnswerDataByUser(userId)
+        ) {
             userAnswerResponses.add(new UserAnswerResponse(questionService.getQuestionNameById(userAnswer.getQuestionId()),
-                    userAnswer.getUserAnswer(),userAnswer.getRight()));
+                    userAnswer.getUserAnswer(), userAnswer.getRight()));
         }
 
         return userAnswerResponses;

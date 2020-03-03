@@ -11,7 +11,8 @@ public class Answer {
     private String name;
     private boolean isRight;
 
-    public Answer(){}
+    public Answer() {
+    }
 
     public Answer(Long id, String name, Boolean isRight) {
         this.id = id;

@@ -1,13 +1,10 @@
 package com.nyubin.service;
 
-import com.nyubin.model.User;
-import com.nyubin.model.UserAnswer;
 import com.nyubin.model.UserScore;
 import com.nyubin.repository.UserScoreRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -17,13 +14,13 @@ public class UserScoreServiceImpl implements UserScoreService {
     @Autowired
     private UserScoreRepo userScoreRepo;
 
-    public Long countComplitedTesting() {
+    public Long countCompletedTesting() {
         return userScoreRepo.count();
     }
 
     @Override
-    public Long countComplitedAllQuestionRight() {
-        return userScoreRepo.countComplitedAllQuestionRight();
+    public Long countCompletedAllQuestionRight() {
+        return userScoreRepo.countCompletedAllQuestionRight();
     }
 
     public Long findUserScoreByUserId(Long id) {
@@ -32,7 +29,6 @@ public class UserScoreServiceImpl implements UserScoreService {
 
     public Double percentageWithLargerScore(Long id) {
 
-//        Long countWithLargerUserScore = userScoreRepo.findCountWithLargerUserScore(user.getId());
         Long countWithLargerUserScore = userScoreRepo.findCountWithLargerUserScore(id);
         long count = userScoreRepo.count();
         if (count == 0){
@@ -44,7 +40,6 @@ public class UserScoreServiceImpl implements UserScoreService {
     }
     public Double percentageWithLowerScore(Long id) {
 
-//        Long countWithLargerUserScore = userScoreRepo.findCountWithLowerUserScore(user.getId());
         Long countWithLargerUserScore = userScoreRepo.findCountWithLowerUserScore(id);
 
         long count = userScoreRepo.count();
@@ -70,19 +65,6 @@ public class UserScoreServiceImpl implements UserScoreService {
         df.setRoundingMode(RoundingMode.CEILING);
         return Double.valueOf(df.format(doubleValue));
     }
-
-
-
-
-//    public BigDecimal pessentegeWithLowerScore(User user) {
-//        return BigDecimal.valueOf(userScoreRepo.findCountWithLowerUserScore(user.getId()))
-//                .divide(getCount())
-//                .multiply(BigDecimal.valueOf(100));
-//    }
-
-//    private Long getCount() {
-//        return BigDecimal.valueOf(userScoreRepo.count());
-//    }
 
 
 }

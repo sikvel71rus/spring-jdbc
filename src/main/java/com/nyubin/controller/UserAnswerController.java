@@ -3,10 +3,8 @@ package com.nyubin.controller;
 import com.nyubin.model.User;
 import com.nyubin.model.UserAnswer;
 import com.nyubin.model.UserAnswerResponse;
-import com.nyubin.repository.UserAnswerRepo;
 import com.nyubin.service.UserAnswerResponseService;
 import com.nyubin.service.UserAnswerService;
-import com.nyubin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,23 +23,23 @@ public class UserAnswerController {
     private UserAnswerResponseService userAnswerResponseService;
 
     @GetMapping("/userAnswers")
-    List<UserAnswer> findAll(){
+    List<UserAnswer> findAll() {
         return userAnswerService.findAll();
     }
 
     @GetMapping("/userAnswers/{id}")
-    Optional<UserAnswer> findById(@PathVariable Long id){
+    Optional<UserAnswer> findById(@PathVariable Long id) {
         return userAnswerService.findById(id);
     }
 
     @PostMapping("/userAnswers")
     @ResponseStatus(HttpStatus.CREATED)
-    UserAnswer save(@RequestBody UserAnswer newUserAnswer, @AuthenticationPrincipal User user){
+    UserAnswer save(@RequestBody UserAnswer newUserAnswer, @AuthenticationPrincipal User user) {
         return userAnswerService.save(newUserAnswer, user);
     }
 
     @GetMapping("/userAnswerResponse")
-    List<UserAnswerResponse> getUserAnswersResponse(@AuthenticationPrincipal User user){
+    List<UserAnswerResponse> getUserAnswersResponse(@AuthenticationPrincipal User user) {
         return userAnswerResponseService.getUserAnswersResponse(user);
     }
 }

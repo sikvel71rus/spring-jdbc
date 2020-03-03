@@ -62,34 +62,34 @@ public class QuestionServiceImpl implements QuestionService {
 
         for (Answer answer : question.getAnswerSet()
         ) {
-            if ((Boolean.TRUE).equals(answer.isRight())){
+            if ((Boolean.TRUE).equals(answer.isRight())) {
                 trueAnswersCount++;
             }
 
-            if (answer.getName() == ""){
+            if (answer.getName() == "") {
                 throw new WrongQuestionCompilationException();
             }
 
-            if (answerNames.contains(answer.getName())){
+            if (answerNames.contains(answer.getName())) {
                 throw new WrongQuestionCompilationException();
             }
             answerNames.add(answer.getName());
 
         }
 
-        if (trueAnswersCount !=1){
+        if (trueAnswersCount != 1) {
             throw new WrongQuestionCompilationException();
         }
 
         return questionDataRepo.save(question);
     }
 
-    public Optional<Question> findRandomQuestion(User user){
+    public Optional<Question> findRandomQuestion(User user) {
 
-        if(questionDataRepo.count()<5){
+        if (questionDataRepo.count() < 5) {
             throw new NotEnoughQuestionsException();
         }
-        if(userScoreService.findUserScoreByUserId(user.getId()) != null){
+        if (userScoreService.findUserScoreByUserId(user.getId()) != null) {
             throw new UserAlreadyPassedTestException();
         }
 
@@ -97,20 +97,20 @@ public class QuestionServiceImpl implements QuestionService {
 
         List<Long> allIds = questionDataRepo.findAllIds();
 
-        List<Long> allQuestionIdsbyUser = userAnswerService.findAllQuestionIdsByUser(userId);
+        List<Long> allQuestionIdsByUser = userAnswerService.findAllQuestionIdsByUser(userId);
 
-        if(allQuestionIdsbyUser != null) {
-            for (Long questionId : allQuestionIdsbyUser
+        if (allQuestionIdsByUser != null) {
+            for (Long questionId : allQuestionIdsByUser
             ) {
                 if (allIds.contains(questionId)) {
                     allIds.remove(questionId);
                 }
             }
         }
-        //TODO check
-        int maxIndex = allIds.size() -1;
 
-        int questionIndex = (int)(Math.random() * ++maxIndex);
+        int maxIndex = allIds.size() - 1;
+
+        int questionIndex = (int) (Math.random() * ++maxIndex);
 
         return deleteAnswersFromQuestion(questionDataRepo.findById(allIds.get(questionIndex)));
     }
@@ -121,15 +121,14 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
 
-    private Optional<Question> deleteAnswersFromQuestion(Optional<Question> questionData){
+    private Optional<Question> deleteAnswersFromQuestion(Optional<Question> questionData) {
 
 
-
-        if (questionData.get().getAnswerSet().size() == 1){
+        if (questionData.get().getAnswerSet().size() == 1) {
             questionData.get().setAnswerSet(null);
-        }else{
-            for (Answer answer :questionData.get().getAnswerSet()
-                 ) {
+        } else {
+            for (Answer answer : questionData.get().getAnswerSet()
+            ) {
                 answer.setRight(false);
             }
         }

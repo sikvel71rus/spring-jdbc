@@ -16,13 +16,13 @@ public class GeneralStatisticServiceImpl implements GeneralStatisticService {
 
         Long countUsers = userService.countUsers();
 
-        Long countUsersComplitedTest = userScoreService.count();
+        Long countUsersCompletedTest = userScoreService.count();
 
-        Long countUsersComplitedAllQuestionRight = userScoreService.countComplitedAllQuestionRight();
+        Long countUsersCompletedAllQuestionRight = userScoreService.countCompletedAllQuestionRight();
 
         String resultStatistic = "Пользователей зарегистрированно :" + countUsers + "\n"
-                + "Пользователей, закончивших тестирование:" + countUsersComplitedTest + "\n"
-                + "Пользователей, ответивших на все вопросы правильно:" + countUsersComplitedAllQuestionRight;
+                + "Пользователей, закончивших тестирование:" + countUsersCompletedTest + "\n"
+                + "Пользователей, ответивших на все вопросы правильно:" + countUsersCompletedAllQuestionRight;
 
         return resultStatistic;
     }

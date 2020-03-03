@@ -1,7 +1,6 @@
 package com.nyubin.controller;
 
 import com.nyubin.model.User;
-import com.nyubin.repository.UserRepo;
 import com.nyubin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/users")
-    List<User> findAll(){
+    List<User> findAll() {
         return userService.findAll();
     }
 

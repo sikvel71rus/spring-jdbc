@@ -12,21 +12,18 @@ public class Question {
     private Long id;
     private String name;
     private Set<Answer> answerSet = new HashSet<>();
-//    private QuestionType questionType;
 
     public Question(){}
 
-    public Question(Long id, String name, Set<Answer> answerSet, QuestionType questionType) {
+    public Question(Long id, String name, Set<Answer> answerSet) {
         this.id = id;
         this.name = name;
         this.answerSet = answerSet;
-//        this.questionType = questionType;
     }
 
-    public Question(String name, Set<Answer> answerSet, QuestionType questionType) {
+    public Question(String name, Set<Answer> answerSet) {
         this.name = name;
         this.answerSet = answerSet;
-//        this.questionType = questionType;
     }
 
     public Long getId() {
@@ -53,11 +50,4 @@ public class Question {
         this.answerSet = answerSet;
     }
 
-//    public QuestionType getQuestionType() {
-//        return questionType;
-//    }
-//
-//    public void setQuestionType(QuestionType questionType) {
-//        this.questionType = questionType;
-//    }
 }

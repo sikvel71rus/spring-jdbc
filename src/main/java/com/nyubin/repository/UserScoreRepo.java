@@ -9,7 +9,7 @@ public interface UserScoreRepo extends CrudRepository<UserScore,Long> {
 
     @Query("select count(*) from user_scores " +
             "where user_score = 5")
-    Long countComplitedAllQuestionRight();
+    Long countCompletedAllQuestionRight();
 
     @Query("select user_score from user_scores where user_id = :id")
     Long findUserScoreByUserId(@Param("id") Long id);

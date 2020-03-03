@@ -1,14 +1,8 @@
 package com.nyubin.controller;
 
-import com.nyubin.model.UserAnswer;
-import com.nyubin.model.UserScore;
-import com.nyubin.service.UserAnswerService;
-import com.nyubin.service.UserScoreService;
-import com.nyubin.service.UserService;
 import com.nyubin.service.UserStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,14 +12,8 @@ public class UserStatisticController {
     @Autowired
     private UserStatisticService userStatisticService;
 
-    //TODO ИСПАРАВИТЬ ЭТО НЕМЕДЛЕННО!!!!
-
-//    public String getUserStatistic(@PathVariable String name){
-//        return userStatisticService.getUserStatistic(name);
-//    }
-//@GetMapping("/userStatistic/{name}")
     @GetMapping("/userStatistic")
-    public String getUserStatistic(@RequestParam String name){
+    public String getUserStatistic(@RequestParam String name) {
         return userStatisticService.getUserStatistic(name);
     }
 

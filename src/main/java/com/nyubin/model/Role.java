@@ -8,7 +8,7 @@ public class Role implements GrantedAuthority {
 
     @Id
     private Long id;
-    private String authorityName  = "USER";
+    private String authorityName = "USER";
 
     public Role() {
         this.authorityName = "USER";

@@ -19,7 +19,7 @@ public class UserStatisticServiceImpl implements UserStatisticService {
     private UserScoreService userScoreService;
 
 
-    public String getUserStatistic(String name){
+    public String getUserStatistic(String name) {
         Long userId = userService.findIdByUserName(name);
 
         Long CountRightQuestion = userAnswerService.countRightAnswersByUser(userId);
@@ -27,9 +27,9 @@ public class UserStatisticServiceImpl implements UserStatisticService {
         Double percentageWithLargerScore = userScoreService.percentageWithLargerScore(CountRightQuestion);
         Double percentageWithLowerScore = userScoreService.percentageWithLowerScore(CountRightQuestion);
 
-        String resultUserStatistic = "Правильных ответов у "+name+": "+CountRightQuestion+"\n"
-                +"Процентов пользователей справилось с тестом лучше "+name+": "+percentageWithLargerScore+"\n"
-                +"Процентов пользователей справилось с тестом хуже "+name+": "+percentageWithLowerScore;
+        String resultUserStatistic = "Правильных ответов у " + name + ": " + CountRightQuestion + "\n"
+                + "Процентов пользователей справилось с тестом лучше " + name + ": " + percentageWithLargerScore + "\n"
+                + "Процентов пользователей справилось с тестом хуже " + name + ": " + percentageWithLowerScore;
 
         return resultUserStatistic;
     }

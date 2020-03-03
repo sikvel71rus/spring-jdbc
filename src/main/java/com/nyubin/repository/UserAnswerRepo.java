@@ -11,11 +11,11 @@ public interface UserAnswerRepo extends CrudRepository<UserAnswer,Long> {
 
     @Query("select question_id from user_answers " +
             "where user_id = :id")
-    List<Long> findAllQuestionIdsbyUser(@Param("id") Long id);
+    List<Long> findAllQuestionIdsByUser(@Param("id") Long id);
 
     @Query("select * from user_answers " +
             "where user_id = :id")
-    List<UserAnswer> findAllUserAnswersbyUser(@Param("id") Long id);
+    List<UserAnswer> findAllUserAnswersByUser(@Param("id") Long id);
 
 
     @Query("select count(*) from user_answers " +

@@ -19,23 +19,22 @@ public class UserServiceImpl implements UserService {
     private UserRepo userRepo;
 
     @Override
-    public String addUser(User user){
+    public String addUser(User user) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
-        if(userFromDb != null){
-        return "User exist";
+        if (userFromDb != null) {
+            return "User exist";
         }
-//        user.setRoles(new Role());
+
         user.getRoles().add(new Role());
         userRepo.save(user);
         return "User added";
 
     }
 
-    public List<User> findAll(){
+    public List<User> findAll() {
         return (List<User>) userRepo.findAll();
     }
-
 
 
     @Override
@@ -43,14 +42,14 @@ public class UserServiceImpl implements UserService {
         return userRepo.findByUsername(userName);
     }
 
-    public Long countUsers(){
+    public Long countUsers() {
         return userRepo.count();
     }
 
-    public Long findIdByUserName(String name){
+    public Long findIdByUserName(String name) {
 
         Long userId = userRepo.findIdByUserName(name);
-        if (userId == null){
+        if (userId == null) {
             throw new UserNotFoundException();
         }
         return userId;

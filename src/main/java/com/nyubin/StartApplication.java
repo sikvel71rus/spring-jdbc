@@ -76,10 +76,6 @@ public class StartApplication implements CommandLineRunner {
             answerHashSet.add(answer1);
             question.setAnswerSet(answerHashSet);
 
-            QuestionType questionType = new QuestionType();
-            questionType.setName("Свободный выбор ответа");
-            questionType.setId(1L);
-//            question.setQuestionType(questionType);
 
             questionDataRepo.save(question);
 

@@ -35,7 +35,7 @@ public class UserAnswerServiceImpl implements UserAnswerService {
         Optional<UserAnswer> userAnswer = userAnswerRepo.findById(id);
 
         //TODO Check
-        if (userAnswer == null){
+        if (userAnswer == null) {
             throw new QuestionNotFoundException();
         }
 
@@ -47,35 +47,35 @@ public class UserAnswerServiceImpl implements UserAnswerService {
 
         newUserAnswer.setUserId(user.getId());
 
-        if(userScoreService.findUserScoreByUserId(user.getId()) != null){
+        if (userScoreService.findUserScoreByUserId(user.getId()) != null) {
             throw new UserAlreadyPassedTestException();
         }
 
 
-        if(!questionDataRepo.findAllIds().contains(newUserAnswer.getQuestionId())){
+        if (!questionDataRepo.findAllIds().contains(newUserAnswer.getQuestionId())) {
             throw new QuestionNotFoundException();
         }
 
-        if(findAllQuestionIdsByUser(user.getId()).contains(newUserAnswer.getQuestionId())){
+        if (findAllQuestionIdsByUser(user.getId()).contains(newUserAnswer.getQuestionId())) {
             throw new UserAlreadyPassedQuestionException();
         }
-        //TODO обработать optional
+
         Optional<Question> byId = questionDataRepo.findById(newUserAnswer.getQuestionId());
 
-        for (Answer answer :byId.get().getAnswerSet()
-             ) {
-            if (Boolean.TRUE.equals(answer.isRight())){
-                if (newUserAnswer.getUserAnswer().toLowerCase().equals(answer.getName())){
+        for (Answer answer : byId.get().getAnswerSet()
+        ) {
+            if (Boolean.TRUE.equals(answer.isRight())) {
+                if (newUserAnswer.getUserAnswer().toLowerCase().equals(answer.getName())) {
                     newUserAnswer.setRight(Boolean.TRUE);
-                }else{
+                } else {
                     newUserAnswer.setRight(Boolean.FALSE);
                 }
             }
         }
 
-        if (userAnswerRepo.countAnswersByUser(user.getId()) == 4){
-            Long countRightAnswer =countRightAnswersByUser(user.getId());
-            if (Boolean.TRUE.equals(newUserAnswer.getRight())){
+        if (userAnswerRepo.countAnswersByUser(user.getId()) == 4) {
+            Long countRightAnswer = countRightAnswersByUser(user.getId());
+            if (Boolean.TRUE.equals(newUserAnswer.getRight())) {
                 countRightAnswer++;
             }
             UserScore userScore = new UserScore();
@@ -87,17 +87,17 @@ public class UserAnswerServiceImpl implements UserAnswerService {
         return userAnswerRepo.save(newUserAnswer);
     }
 
-    public List<Long> findAllQuestionIdsByUser(Long id){
-        return userAnswerRepo.findAllQuestionIdsbyUser(id);
+    public List<Long> findAllQuestionIdsByUser(Long id) {
+        return userAnswerRepo.findAllQuestionIdsByUser(id);
     }
 
-    public Long countRightAnswersByUser(Long id){
+    public Long countRightAnswersByUser(Long id) {
         return userAnswerRepo.countRightAnswersByUser(id);
     }
 
-    public List<UserAnswer> findAllAnswerDataByUser(Long id){
+    public List<UserAnswer> findAllAnswerDataByUser(Long id) {
 
-        return userAnswerRepo.findAllUserAnswersbyUser(id);
+        return userAnswerRepo.findAllUserAnswersByUser(id);
     }
 
 
