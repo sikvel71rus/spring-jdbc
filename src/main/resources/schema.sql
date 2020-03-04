@@ -22,12 +22,6 @@ CREATE TABLE answers(
     is_right boolean,
     name VARCHAR(255));
 
-DROP TABLE question_type if EXISTS;
-CREATE TABLE question_type(
-    id serial primary key,
-    questions long references questions(id),
-    name VARCHAR(255));
-
 drop table user_answers if exists;
 create table user_answers(
     id serial primary key,

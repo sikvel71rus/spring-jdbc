@@ -29,61 +29,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/registration","/h2-console","/login").permitAll()
-//                .anyRequest().authenticated()
-////                .and()
-////                .formLogin()
-////                .loginPage("/login")
-////                .permitAll()
-//                .and()
-//                .logout()
-//                .permitAll()
-//                .and().csrf().disable();
-////                .formLogin().disable();
-        http
-//                HTTP Basic authentication
-                .httpBasic()
-//                .and()
-//                .logout()
-////                .logoutUrl("/logout")
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .clearAuthentication(true)
-//                .logoutSuccessUrl("/logout.done")
-////                .deleteCookies("JSESSIONID")
-//                .invalidateHttpSession(true)
-//                .logoutSuccessUrl("/")
-//                .authorizeRequests()
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/registration","/h2-console").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .logout()
-//                .logoutSuccessUrl("/login?logout")
-//                .invalidateHttpSession(true)
-            .and()
 
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll()
-//                .and()
+        http
+                .httpBasic()
+            .and()
                 .headers()
                 .frameOptions()
                 .disable()
             .and()
                 .authorizeRequests()
-                .antMatchers("/registration","/h2-console").permitAll()
+                .antMatchers("/registration").permitAll()
                 .anyRequest().authenticated()
-//                .antMatchers(HttpMethod.GET, "/questions/**").hasRole("USER")
-//                .antMatchers(HttpMethod.POST, "/questions").hasRole("USER")
-//                .antMatchers(HttpMethod.GET, "/useranswers/**").hasRole("USER")
-//                .antMatchers(HttpMethod.POST, "/useranswers").hasRole("USER")
             .and()
                 .csrf().disable();
-//                .formLogin().disable();
-
 
     }
 
@@ -93,22 +51,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("2")
-//                        .password("2")
-//                        .roles("USER")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
-
-//        @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("user").password("{noop}password").roles("USER");
-//    }
 }
