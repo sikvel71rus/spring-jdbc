@@ -12,15 +12,23 @@ import java.util.List;
 
 
 public interface UserService extends UserDetailsService {
-
+    /**
+     *Добавить пользователя
+     */
     String addUser(User user);
-
+    /**
+     *Получение списка всех пользователей
+     */
     List<User> findAll();
-
-    UserDetails loadUserByUsername(String var1) throws UsernameNotFoundException;
-
+//TODO check
+//    UserDetails loadUserByUsername(String var1) throws UsernameNotFoundException;
+    /**
+     *Получение количества пользователей, зарегистрированных в системе
+     */
     Long countUsers();
-
+    /**
+     *Получение id пользователя по имени пользователя
+     */
     Long findIdByUserName(String name);
 
 

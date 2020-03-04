@@ -22,11 +22,11 @@ public class UserAnswerResponseServiceImpl implements UserAnswerResponseService 
 
         Long userId = user.getId();
 
-        List<UserAnswer> allAnswerDataByUser = userAnswerService.findAllAnswerDataByUser(userId);
+        List<UserAnswer> allAnswerDataByUser = userAnswerService.findAllAnswerByUser(userId);
 
         List<UserAnswerResponse> userAnswerResponses = new ArrayList<>();
 
-        for (UserAnswer userAnswer : userAnswerService.findAllAnswerDataByUser(userId)
+        for (UserAnswer userAnswer : userAnswerService.findAllAnswerByUser(userId)
         ) {
             userAnswerResponses.add(new UserAnswerResponse(questionService.getQuestionNameById(userAnswer.getQuestionId()),
                     userAnswer.getUserAnswer(), userAnswer.getRight()));

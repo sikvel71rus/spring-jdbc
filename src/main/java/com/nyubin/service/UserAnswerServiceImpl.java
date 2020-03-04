@@ -95,7 +95,7 @@ public class UserAnswerServiceImpl implements UserAnswerService {
         return userAnswerRepo.countRightAnswersByUser(id);
     }
 
-    public List<UserAnswer> findAllAnswerDataByUser(Long id) {
+    public List<UserAnswer> findAllAnswerByUser(Long id) {
 
         return userAnswerRepo.findAllUserAnswersByUser(id);
     }

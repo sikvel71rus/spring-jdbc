@@ -16,7 +16,7 @@ public class GeneralStatisticServiceImpl implements GeneralStatisticService {
 
         Long countUsers = userService.countUsers();
 
-        Long countUsersCompletedTest = userScoreService.count();
+        Long countUsersCompletedTest = userScoreService.countCompletedTesting();
 
         Long countUsersCompletedAllQuestionRight = userScoreService.countCompletedAllQuestionRight();
 

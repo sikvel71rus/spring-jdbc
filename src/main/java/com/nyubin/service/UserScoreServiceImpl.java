@@ -51,9 +51,9 @@ public class UserScoreServiceImpl implements UserScoreService {
         return roundDoubleValue(((double)countWithLargerUserScore / (double)count) * 100);
     }
 
-    public Long count(){
-        return userScoreRepo.count();
-    }
+//    public Long count(){
+//        return userScoreRepo.count();
+//    }
     public UserScore save(UserScore userScore){
         return userScoreRepo.save(userScore);
     }
