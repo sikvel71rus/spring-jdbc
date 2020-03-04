@@ -35,7 +35,7 @@ public class QuestionController {
         return questionService.save(question);
     }
 
-    @GetMapping("/questionRandom")
+    @GetMapping("/questions/random")
     Optional<Question> findRandomQuestion(@AuthenticationPrincipal User user) {
         return questionService.findRandomQuestion(user);
     }

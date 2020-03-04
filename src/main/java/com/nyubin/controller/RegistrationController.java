@@ -12,12 +12,6 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("registration")
-    User getUser() {
-        return new User();
-    }
-
-
     @PostMapping("/registration")
     @ResponseStatus(HttpStatus.CREATED)
     String addUser(@RequestBody User user) {

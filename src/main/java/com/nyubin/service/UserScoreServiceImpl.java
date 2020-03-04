@@ -51,9 +51,7 @@ public class UserScoreServiceImpl implements UserScoreService {
         return roundDoubleValue(((double)countWithLargerUserScore / (double)count) * 100);
     }
 
-//    public Long count(){
-//        return userScoreRepo.count();
-//    }
+
     public UserScore save(UserScore userScore){
         return userScoreRepo.save(userScore);
     }
@@ -61,9 +59,8 @@ public class UserScoreServiceImpl implements UserScoreService {
 
 
     private Double roundDoubleValue(Double doubleValue){
-        DecimalFormat df = new DecimalFormat("#.##");
-        df.setRoundingMode(RoundingMode.CEILING);
-        return Double.valueOf(df.format(doubleValue));
+
+        return Math.rint(doubleValue*100.0)/100.0;
     }
 
 

@@ -20,8 +20,6 @@ public interface UserService extends UserDetailsService {
      *Получение списка всех пользователей
      */
     List<User> findAll();
-//TODO check
-//    UserDetails loadUserByUsername(String var1) throws UsernameNotFoundException;
     /**
      *Получение количества пользователей, зарегистрированных в системе
      */

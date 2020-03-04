@@ -22,8 +22,6 @@ public interface UserScoreService {
      * определение текущего пользователя по id
      */
     Double percentageWithLowerScore(Long id);
-//TODO проверить не сломал ли я чего
-//    Long count();
     /**
      *Сохранение результатов пользователя
      */

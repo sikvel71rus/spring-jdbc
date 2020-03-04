@@ -38,7 +38,7 @@ public class UserAnswerController {
         return userAnswerService.save(newUserAnswer, user);
     }
 
-    @GetMapping("/userAnswerResponse")
+    @GetMapping("/userAnswers/response")
     List<UserAnswerResponse> getUserAnswersResponse(@AuthenticationPrincipal User user) {
         return userAnswerResponseService.getUserAnswersResponse(user);
     }

@@ -3,6 +3,7 @@ package com.nyubin.service;
 import com.nyubin.error.QuestionNotFoundException;
 import com.nyubin.error.UserAlreadyPassedQuestionException;
 import com.nyubin.error.UserAlreadyPassedTestException;
+import com.nyubin.error.UserAnswerNotFoundException;
 import com.nyubin.model.*;
 import com.nyubin.repository.QuestionDataRepo;
 import com.nyubin.repository.UserAnswerRepo;
@@ -34,9 +35,8 @@ public class UserAnswerServiceImpl implements UserAnswerService {
     public Optional<UserAnswer> findById(Long id) {
         Optional<UserAnswer> userAnswer = userAnswerRepo.findById(id);
 
-        //TODO Check
         if (userAnswer == null) {
-            throw new QuestionNotFoundException();
+            throw new UserAnswerNotFoundException();
         }
 
         return userAnswerRepo.findById(id);
